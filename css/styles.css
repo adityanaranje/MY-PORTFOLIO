@@ -1,0 +1,315 @@
+body {
+  background-color: #5d5cdb;
+}
+
+.block-one {
+  background-color: #5d5cdb;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  margin: 30px;
+  background-color: #5d5cdb;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.block-one a,
+p {
+  color: white;
+}
+
+.heading {
+  color: white;
+}
+
+.info {
+  padding-top: 40px;
+}
+
+.title {
+  font-family: "Kanit", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.desc {
+  font-family: cursive;
+}
+
+.myimg {
+  padding-top: 20px;
+  align-self: center;
+}
+
+.block-one .dropdown-menu {
+  --bs-dropdown-min-width: 22rem;
+  --bs-dropdown-bg: none;
+  --bs-dropdown-border-color: rgb(235, 101, 233);
+  --bs-dropdown-border-radius: 0.5rem;
+  --bs-dropdown-border-width: 0.2rem;
+  --bs-dropdown-padding-x: 4;
+}
+
+.block-one ul li ul li {
+  display: inline-block;
+}
+
+/* Block Two */
+
+.block-two {
+  background-color: #ffffff;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.block-two .s1 {
+  text-decoration: none;
+  font-family: monospace;
+  color: #5d5cdb;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.block-two .s2 {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Kanit", sans-serif;
+  text-decoration: none;
+  color: black;
+}
+
+.block-two .s3 {
+  color: black;
+}
+
+.block-two .i1 {
+  width: 200px;
+}
+
+.block-two .card {
+  height: auto;
+}
+
+.card {
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.cards {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.cards img {
+  width: 100px;
+  height: 100px;
+  mix-blend-mode: multiply;
+}
+
+.cards .c1 {
+  background-color: #5d5cdb;
+  color: white;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.cards .c2 {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid black;
+}
+
+.cards a {
+  font-family: "Kanit", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.c2 p {
+  color: black;
+}
+
+/*Section Three*/
+
+.block-three {
+  padding-top: 35px;
+  padding-bottom: 40px;
+  background-color: #efefff;
+  overflow-x: hidden;
+}
+
+.block-three h3 {
+  text-align: center;
+  padding-top: 30px;
+  font-family: "Kanit", sans-serif;
+  color: black;
+}
+
+.block-three p {
+  color: black;
+  text-align: center;
+}
+
+.block-three .container {
+  width: 80%;
+  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #5d5cdb;
+  border-radius: 30px 30px 30px 30px;
+}
+
+.block-three .skill {
+  margin: 35px;
+  height: auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.skills img {
+  width: 90px;
+  height: 90px;
+}
+
+.block-three .sk-1 {
+  background-color: #ededed;
+  color: rgb(0, 0, 0);
+}
+
+.block-three .sk-2 {
+  background-color: #feb12f;
+}
+
+/*Block Four*/
+
+.block-four {
+  margin-top: 45px;
+  margin-bottom: 20px;
+  overflow-x: hidden;
+}
+
+.block-four h3 {
+  color: #5d5cdb;
+  text-align: center;
+}
+
+.block-four p {
+  color: black;
+  text-align: center;
+}
+
+.block-four .container {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.block-four .box {
+  height: auto;
+}
+
+.block-four h5 {
+  text-align: center;
+  font-family: "Kanit", sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.block-four img {
+  border-radius: 10px;
+}
+
+/* Block Five */
+
+.block-five {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #5d5cdb;
+  overflow-x: hidden;
+}
+
+.block-five h4 {
+  margin-top: 50px;
+  text-align: center;
+  font-family: "Kanit", sans-serif;
+  color: white;
+}
+
+.block-five .container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.block-five h1 {
+  margin-top: 30px;
+  font-family: "Kanit", sans-serif;
+  color: white;
+}
+
+.block-five p {
+  color: white;
+  padding-top: 20px;
+}
+
+.block-five .certificate {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/*Block Six*/
+
+.block-six {
+  overflow-x: hidden;
+  background-color: rgb(155 127 184);
+  overflow-wrap: break-word;
+}
+
+.block-six a {
+  text-decoration: none;
+}
+
+/* copyright */
+
+.cp {
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+.cp a {
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Kanit", sans-serif;
+  font-size: 15px;
+}
+
+.copyright {
+  background-color: black;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.copyright p {
+  color: white;
+  padding-bottom: 0;
+  font-size: 10px;
+}
