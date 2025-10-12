@@ -278,18 +278,11 @@
         }
 
         .project-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #2a2a2a 0%, #404040 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            color: rgba(255,255,255,0.1);
-            transition: background 0.3s ease, color 0.3s ease;
-            overflow: hidden;
-            position: relative;
-        }
+    width: 100%;
+    height: 100%; /* let the container take full height of the card */
+    overflow: hidden;
+    position: relative;
+}
 
         .project-image img {
             width: 100%;
@@ -428,6 +421,20 @@
 .skill-item.ml .skill-icon { color: #6A5ACD; }      /* Machine Learning - Purple */
 .skill-item.da .skill-icon { color: #20B2AA; }      /* Data Analysis - Teal */
 
+.about-image {
+    background-image: url('static/images/Background/about-image.png');
+    background-size: cover;       /* makes image cover entire box */
+    background-position: center;  /* centers the image */
+    background-repeat: no-repeat; /* prevents tiling */
+    width: 100%;                  /* full width of container */
+    height: 400px;                /* adjust height as needed */
+    border-radius: 15px;
+    border: 1px solid #505050;
+    overflow: hidden;             /* hides any overflow */
+}
+
+
+        
         /* Services Section */
         .services-section {
             padding: 80px 0;
@@ -1010,7 +1017,7 @@
     <section class="about-section" id="about">
         <div class="container">
             <div class="about-content">
-                <div class="about-image" style="background-image: url('static/images/Background/about-image.png'); background-size: cover; background-position: center; height: 400px; border-radius: 15px; border: 1px solid #505050;"></div>
+                <div class="about-image"></div>
                 <div class="about-text">
                     <h2>About Me</h2>
                     <p>I'm a passionate Business Analyst with over 1 year of experience turning data into actionable insights and driving strategic decisions. I specialize in data analysis, business intelligence, and leveraging Gen AI to solve complex problems.</p>
@@ -1141,7 +1148,7 @@
     <script>
         const projects = [
   { id: 1, title: "Research Agent (Agent Builder)", category: "Agentic AI", description: "Multi-agent AI workflow for real-time research and insights.", link: "https://github.com/adityanaranje/Agent-Builder-Research-Agent", image: "static/images/Projects/agent-builder.png" },
-  { id: 2, title: "Github Events Notifier (n8n)", category: "Agentic AI", description: "Turns GitHub events into intelligent AI-powered notifications.", link: "https://github.com/adityanaranje/n8n-github-events-telegram-email-workflow", image: "images/Projects/telegram-bot.png" },
+  { id: 2, title: "Github Events Notifier (n8n)", category: "Agentic AI", description: "Turns GitHub events into intelligent AI-powered notifications.", link: "https://github.com/adityanaranje/n8n-github-events-telegram-email-workflow", image: "static/images/Projects/telegram-bot.png" },
   { id: 3, title: "CODEVO", category: "Generative AI", description: "AI tool for automated code review and generation.", link: "https://github.com/adityanaranje/CODEVO", image: "static/images/Projects/codevo.png" },
   { id: 4, title: "Mobile Shop WhatsApp Agent (n8n)", category: "Agentic AI", description: "WhatsApp chatbot managing store orders and customer queries.", link: "https://github.com/adityanaranje/n8n-WhatsApp-Bot", image: "static/images/Projects/whatsapp-bot.png" },
   { id: 5, title: "Fitness Chatbot", category: "Generative AI", description: "AI fitness assistant for personalized workouts and nutrition.", link: "https://github.com/adityanaranje/FITNESS-CHATBOT", image: "static/images/Projects/fitness-bot.png" },
@@ -1174,7 +1181,7 @@
     tags: ["Data Visualization", "Python", "Plotly"],
     icon: "📊",
     link: "https://medium.com/me/stats/post/ca5e8ffe4484?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
-    image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Blogs/Stats.png"
+    image: "static/images/Blogs/Stats.png"
   },
   {
     id: 2,
@@ -1184,7 +1191,7 @@
     tags: ["Statistics", "Python", "Data Analysis"],
     icon: "📈",
     link: "https://medium.com/me/stats/post/9d150af9ef46?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
-    image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Blogs/plotly.png"
+    image: "static/images/Blogs/plotly.png"
   },
   {
     id: 3,
@@ -1194,7 +1201,7 @@
     tags: ["Python", "Data Cleaning", "ETL"],
     icon: "🏏",
     link: "https://medium.com/me/stats/post/bcb4b590e5a8?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
-    image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Blogs/datacleaning.png"
+    image: "static/images/Blogs/datacleaning.png"
   },
   {
     id: 4,
@@ -1204,7 +1211,7 @@
     tags: ["Data Analysis", "Python", "Streamlit"],
     icon: "📊",
     link: "https://medium.com/me/stats/post/b4c44a134584?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
-    image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Blogs/dataanalysis.png"
+    image: "static/images/Blogs/dataanalysis.png"
   }
 ];
 
@@ -1328,6 +1335,7 @@
     </script>
 </body>
 </html>
+
 
 
 
