@@ -1,626 +1,1330 @@
-<!DOCTYPE html="html">
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm / bootstrap@5.3.0 / dist / js / bootstrap.bundle.min.js " integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Naranje - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papWf09...==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #121212;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit&display=swap" rel="stylesheet">
-     <link rel="icon" type="image/x-icon" href="/static/images/venom.ico">
-    <title>Aditya Naranje</title>
+        /* Navigation */
+        nav {
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: #1a1a1a;
+            backdrop-filter: blur(10px);
+            padding: 25px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            background: #2a2a2a;
+            border: 1px solid #404040;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            position: absolute;
+            left: 20px;
+        }
+
+        .theme-toggle:hover {
+            background: #3a3a3a;
+            transform: scale(1.05);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            padding: 60px 70px;
+            background: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Background/bg_dark.jpg');
+            background-size: auto 100%;
+            background-position: right center;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            z-index: 0;
+            transition: background-image 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            opacity: 0.7;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: background 0.3s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            opacity: 0.7;
+            margin-bottom: 40px;
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 80px 0;
+            background: #121212;
+            transition: background 0.3s ease;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 50px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            background: transparent;
+            border: 2px solid #333;
+            color: #aaa;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .category-tab:hover,
+        .category-tab.active {
+            background: #fff;
+            color: #0a0a0a;
+            border-color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .projects-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 20px 0;
+            margin: 0 -20px;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .projects-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .projects-wrapper {
+            display: flex;
+            gap: 30px;
+            padding: 0 20px;
+            min-width: min-content;
+        }
+
+        .project-card {
+            flex: 0 0 350px;
+            background: #1e1e1e;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #404040;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border-color: #444;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #404040 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: rgba(255,255,255,0.1);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .project-category {
+            color: #888;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .project-description {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.7;
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: #1a1a1a;
+            transition: background 0.3s ease;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+.skills {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.skill-tag {
+    background: #2a2a2a;
+    border: 1px solid #404040;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: #fff;
+    color: #0a0a0a;
+    border-color: #fff;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 80px 0;
+    background: #0f0f0f;
+    transition: background 0.3s ease;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.skill-item {
+    background: #1e1e1e;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #404040;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    aspect-ratio: 1;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    border-color: #666;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.skill-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+}
+
+.skill-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #ccc;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Category colors */
+.skill-item.ai .skill-icon { color: #FF6F61; }      /* Generative AI - Red */
+.skill-item.ml .skill-icon { color: #6A5ACD; }      /* Machine Learning - Purple */
+.skill-item.da .skill-icon { color: #20B2AA; }      /* Data Analysis - Teal */
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background: #121212;
+            transition: background 0.3s ease;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: #1e1e1e;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #404040;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #444;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: #2a2a2a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            transition: all 0.3s ease;
+            border: 1px solid #404040;
+        }
+
+        .service-card:hover .service-icon {
+            background: #fff;
+        }
+
+        .service-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .service-description {
+            opacity: 0.7;
+            line-height: 1.6;
+            font-size: 14px;
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: #1a1a1a;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            font-size: 18px;
+            margin: 15px 0;
+            opacity: 0.8;
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: #2a2a2a;
+            border: 1px solid #404040;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 24px;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            background: #fff;
+            color: #0a0a0a;
+            border-color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 30px 0;
+            text-align: center;
+            opacity: 0.6;
+            border-top: 1px solid #1a1a1a;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Light Mode Styles */
+        body.light-mode {
+            background: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        body.light-mode nav {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body.light-mode .theme-toggle {
+            background: #e0e0e0;
+            border-color: #d0d0d0;
+        }
+
+        body.light-mode .theme-toggle:hover {
+            background: #d0d0d0;
+        }
+
+        body.light-mode .menu-toggle span {
+            background: #1a1a1a;
+        }
+
+        body.light-mode .nav-links a {
+            color: #666;
+        }
+
+        body.light-mode .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .nav-links a::after {
+            background: #1a1a1a;
+        }
+
+        body.light-mode .hero {
+            background: #ffffff;
+        }
+
+        body.light-mode .hero::before {
+            background-image: url('https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Background/bg_light.png');
+            opacity: 1;
+        }
+
+        body.light-mode .hero h2 {
+            color: #666;
+        }
+
+        body.light-mode .hero h1 {
+            background: linear-gradient(135deg, #1a1a1a 0%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.light-mode .hero-subtitle {
+            color: #666;
+        }
+
+        body.light-mode .portfolio-section {
+            background: #f5f5f5;
+        }
+
+        body.light-mode .category-tab {
+            border-color: #d0d0d0;
+            color: #666;
+        }
+
+        body.light-mode .category-tab:hover,
+        body.light-mode .category-tab.active {
+            background: #1a1a1a;
+            color: #fff;
+            border-color: #1a1a1a;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .project-card {
+            background: #ffffff;
+            border-color: #e0e0e0;
+        }
+
+        body.light-mode .project-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #d0d0d0;
+        }
+
+        body.light-mode .project-image {
+            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+            color: rgba(0,0,0,0.1);
+        }
+
+        body.light-mode .project-title {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .project-category {
+            color: #666;
+        }
+
+        body.light-mode .project-description {
+            color: #666;
+        }
+
+        body.light-mode .about-section {
+            background: #ffffff;
+        }
+
+        body.light-mode .about-text h2 {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .about-text p {
+            color: #666;
+        }
+
+        body.light-mode .skill-tag {
+            background: #e0e0e0;
+            border-color: #d0d0d0;
+            color: #1a1a1a;
+        }
+
+        body.light-mode .skill-tag:hover {
+            background: #1a1a1a;
+            color: #fff;
+            border-color: #1a1a1a;
+        }
+
+        body.light-mode .skills-section {
+            background: #f0f0f0;
+        }
+
+        body.light-mode .skill-item {
+            background: #ffffff;
+            border-color: #e0e0e0;
+        }
+
+        body.light-mode .skill-item:hover {
+            border-color: #d0d0d0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body.light-mode .skill-name {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .services-section {
+            background: #f5f5f5;
+        }
+
+        body.light-mode .service-card {
+            background: #ffffff;
+            border-color: #e0e0e0;
+        }
+
+        body.light-mode .service-card:hover {
+            border-color: #d0d0d0;
+        }
+
+        body.light-mode .service-icon {
+            background: #e0e0e0;
+            border-color: #d0d0d0;
+        }
+
+        body.light-mode .service-card:hover .service-icon {
+            background: #1a1a1a;
+        }
+
+        body.light-mode .service-title {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .service-description {
+            color: #666;
+        }
+
+        body.light-mode .contact-section {
+            background: #ffffff;
+        }
+
+        body.light-mode .section-title {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .contact-item {
+            color: #666;
+        }
+
+        body.light-mode .social-link {
+            background: #e0e0e0;
+            border-color: #d0d0d0;
+            color: #1a1a1a;
+        }
+
+        body.light-mode .social-link:hover {
+            background: #1a1a1a;
+            color: #fff;
+            border-color: #1a1a1a;
+        }
+
+        body.light-mode footer {
+            background: #ffffff;
+            border-top-color: #e0e0e0;
+            color: #1a1a1a;
+        }
+
+        body.light-mode #blogs {
+            background: #ffffff !important;
+        }
+
+        .blog-card {
+            flex: 0 0 350px;
+            background: #1e1e1e;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #404040;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border-color: #444;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #404040 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: rgba(255,255,255,0.1);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-info {
+            padding: 25px;
+        }
+
+        .blog-date {
+            color: #888;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .blog-excerpt {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.7;
+            color: #aaa;
+            transition: color 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .blog-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .blog-tag {
+            background: #2a2a2a;
+            border: 1px solid #404040;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .blog-card {
+            background: #ffffff;
+            border-color: #e0e0e0;
+        }
+
+        body.light-mode .blog-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #d0d0d0;
+        }
+
+        body.light-mode .blog-image {
+            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+            color: rgba(0,0,0,0.1);
+        }
+
+        body.light-mode .blog-title {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .blog-date {
+            color: #666;
+        }
+
+        body.light-mode .blog-excerpt {
+            color: #666;
+        }
+
+        body.light-mode .blog-tag {
+            background: #e0e0e0;
+            border-color: #d0d0d0;
+            color: #1a1a1a;
+        }
+        
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .project-card {
+                flex: 0 0 300px;
+            }
+
+            .category-tabs {
+                gap: 15px;
+            }
+
+            .category-tab {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 83px;
+                left: -100%;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 20px 0;
+                transition: left 0.3s ease;
+                border-bottom: 1px solid #404040;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                padding: 15px 20px;
+                border-bottom: 1px solid #2a2a2a;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 20px;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            body.light-mode .nav-links {
+                background: rgba(255, 255, 255, 0.98);
+                border-bottom-color: #e0e0e0;
+            }
+
+            body.light-mode .nav-links li {
+                border-bottom-color: #e0e0e0;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="block-one">
-        <!-- NavBar -->
-        <nav class="container-fluid navbar navbar-expand-lg" aria="aria" -="-">
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria="aria" -="-" label="Toggle navigation">
-          <span class="navbar-toggler-icon"> </span>
-        </button>
-            <div class="navbar-collapse d-lg-flex collapse" id="navbarsExample11">
-                <a class="navbar-brand offset-lg-1 col-lg-2 heading">
-            My Portfolio
-          </a>
-                <ul class="navbar-nav offset-lg-1 col-lg-4 justify-content-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#certificates">Certificates</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Connect
-                            </a>
-                            <ul class="dropdown-menu">
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="https://www.linkedin.com/in/anaranje" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/linkedin.png" alt="">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://github.com/adityanaranje" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/github.png" alt="">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="mailto:aditya.naranje7@gmail.com" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-success-emphasis bg-success-subtle border border-success-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/email.png" alt="">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.instagram.com/aditya.naranje7/" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/instagram.png" alt="">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://m.facebook.com/mahindra.dhoni.710" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/facebook.png" alt="">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.twitter.com/aditya_naranje" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/twitter.png" alt="">
-                                                </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://adityanaranje.medium.com/" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-light-emphasis bg-light-subtle border border-dark-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/medium.png" alt="">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://discord.com/channels/delta_venom" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-info-emphasis bg-info-subtle border border-info-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/discord.png" alt="">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.kaggle.com/adityanaranje" target="_blank">
-                                            <span class="badge d-flex align-items-center p-1 pe-0 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-pill">
-                                                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/kaggle.png" alt="">
-                                            </span>
-                                        </a>
-                                    </li>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#blogs" onclick="closeMenu()">Blogs</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-                                </ul>
-                            </ul>
-                        </div>
-                    </li>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Hello I'm</h2>
+        <h1>Aditya Naranje</h1>
+        <p class="hero-subtitle">Aspiring Gen AI & ML Enthusiast</p>
+    </section>
 
-                </ul>
-                <div class="d-lg-flex offset-lg-1 col-lg-2 justify-content-lg-end ">
-                    <a href="static/docs/Aditya's Resume.pdf" download>
-                        <button class="btn btn-warning resume-btn btns " href="static/docs/Resume.pdf " download="Aditya Resume.pdf ">
-              Download Resume
-            </button>
-                    </a>
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            
+            <div class="category-tabs">
+                <button class="category-tab active" onclick="filterProjects('all')">All Projects</button>
+                <button class="category-tab" onclick="filterProjects('Agentic AI')">Agentic AI</button>
+                <button class="category-tab" onclick="filterProjects('Machine Learning')">Machine Learning</button>
+                <button class="category-tab" onclick="filterProjects('Generative AI')">Generative AI</button>
+                <button class="category-tab" onclick="filterProjects('Data Analysis')">Data Analysis</button>
+            </div>
+
+            <div class="projects-container" id="projectsContainer">
+                <div class="projects-wrapper" id="projectsWrapper">
+                    <!-- Projects will be inserted here by JavaScript -->
                 </div>
             </div>
-        </nav>
+        </div>
+    </section>
 
-        <!-- Image and description -->
-        <div class="row justify-content-lg-center justify-content-evenly " id="home">
-            <div class="info col-lg-5 col-md-7 col-9 ">
-                <p class="title ">
-                    Hello I 'm <br /> Aditya Naranje <br/> A Data Analysis Enthusiast
-                </p>
-                <p class="desc ">
-                    I am a proficient professional with expertise in machine learning, data analysis, and web development, delivering exceptional results through advanced technical skills and a problem-solving mindset
-                </p>
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image" style="background-image: url('https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Background/about-image.png'); background-size: cover; background-position: center; height: 400px; border-radius: 15px; border: 1px solid #505050;"></div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm a passionate Business Analyst with over 1 year of experience turning data into actionable insights and driving strategic decisions. I specialize in data analysis, business intelligence, and leveraging Gen AI to solve complex problems.</p>
+                    <p>My approach combines analytical thinking with AI-driven solutions to deliver results that not only optimize processes but also create meaningful business impact.</p>
+                   <div class="skills">
+    <span class="skill-tag">Generative AI</span>
+    <span class="skill-tag">Agentic AI</span>
+    <span class="skill-tag">Machine Learning</span>
+    <span class="skill-tag">Data Analysis</span>
+    <span class="skill-tag">Python Programming</span>
+    <span class="skill-tag">Data Visualization</span>
+</div>
 
+                </div>
             </div>
-            <div class="myimg col-lg-4 offset-lg-2 offset-0 col-md-7 col-12 ">
-                <img src="static/images/myimg.png " alt="myimg " />
-            </div>
+
+        </div>
+    </section>
+
+<section class="skills-section" id="skills">
+    <div class="container">
+        <h2 class="section-title">Skills & Tools</h2>
+        <div class="skills-grid">
+
+            <!-- Shuffled skills -->
+            <div class="skill-item ml"><i class="fa-brands fa-python skill-icon"></i><div class="skill-name">Python</div></div>
+            <div class="skill-item ai"><i class="fa-solid fa-robot skill-icon"></i><div class="skill-name">LangChain</div></div>
+            <div class="skill-item ml"><i class="fa-brands fa-python skill-icon"></i><div class="skill-name">PyTorch</div></div>
+            <div class="skill-item da"><i class="fa-brands fa-html5 skill-icon"></i><div class="skill-name">HTML/CSS</div></div>
+            <div class="skill-item ai"><i class="fa-solid fa-brain skill-icon"></i><div class="skill-name">Transformers</div></div>
+            <div class="skill-item ml"><i class="fa-solid fa-repeat skill-icon"></i><div class="skill-name">RNN</div></div>
+            <div class="skill-item da"><i class="fa-solid fa-database skill-icon"></i><div class="skill-name">MySQL</div></div>
+            <div class="skill-item ai"><i class="fa-solid fa-database skill-icon"></i><div class="skill-name">Pinecone</div></div>
+            <div class="skill-item ai"><i class="fa-solid fa-database skill-icon"></i><div class="skill-name">ChromaDB</div></div>
+            <div class="skill-item da"><i class="fa-solid fa-globe skill-icon"></i><div class="skill-name">Streamlit</div></div>
+            <div class="skill-item ai"><i class="fa-solid fa-wrench skill-icon"></i><div class="skill-name">Fine-tuning</div></div>
+            <div class="skill-item ai"><i class="fa-solid fa-database skill-icon"></i><div class="skill-name">RAG</div></div>
+            <div class="skill-item ml"><i class="fa-brands fa-python skill-icon"></i><div class="skill-name">TensorFlow</div></div>
+            <div class="skill-item ml"><i class="fa-brands fa-python skill-icon"></i><div class="skill-name">Scikit-Learn</div></div>
+            <div class="skill-item ml"><i class="fa-solid fa-chart-line skill-icon"></i><div class="skill-name">Pandas</div></div>
+            <div class="skill-item da"><i class="fa-solid fa-chart-simple skill-icon"></i><div class="skill-name">Power BI</div></div>
+            <div class="skill-item ml"><i class="fa-solid fa-square-poll-vertical skill-icon"></i><div class="skill-name">NumPy</div></div>
+            <div class="skill-item ml"><i class="fa-solid fa-chart-pie skill-icon"></i><div class="skill-name">Matplotlib</div></div>
+            <div class="skill-item ml"><i class="fa-solid fa-chart-pie skill-icon"></i><div class="skill-name">Seaborn</div></div>
+            <div class="skill-item da"><i class="fa-solid fa-chart-column skill-icon"></i><div class="skill-name">Plotly</div></div>
+            <div class="skill-item da"><i class="fa-solid fa-file-excel skill-icon"></i><div class="skill-name">Excel</div></div>
+            <div class="skill-item ai"><i class="fa-solid fa-face-smile skill-icon"></i><div class="skill-name">Hugging Face</div></div>
+            <div class="skill-item da"><i class="fa-brands fa-figma skill-icon"></i><div class="skill-name">Figma</div></div>
+            <div class="skill-item ml"><i class="fa-solid fa-broom skill-icon"></i><div class="skill-name">Feature Engineering</div></div>
+            <div class="skill-item ml"><i class="fa-solid fa-broom skill-icon"></i><div class="skill-name">Data Cleaning</div></div>
+            <div class="skill-item da"><i class="fa-brands fa-js skill-icon"></i><div class="skill-name">JavaScript</div></div>
+            <div class="skill-item da"><i class="fa-solid fa-docker skill-icon"></i><div class="skill-name">Docker</div></div>
+            <div class="skill-item ai"><i class="fa-solid fa-cloud skill-icon"></i><div class="skill-name">AstraDB</div></div>
+            <div class="skill-item da"><i class="fa-solid fa-server skill-icon"></i><div class="skill-name">FastAPI</div></div>
         </div>
     </div>
+</section>
 
 
-
-    <!-- Second Block -->
-    <div class="block-two " id="services">
-        <div class="row justify-content-center ">
-            <div class="col-lg-6 ">
-                <a class="s1 ">SERVICES</a>
-            </div>
-        </div>
-
-        <div class="row justify-content-center ">
-            <div class="col-lg-6 ">
-                <a class="s2 ">Expertise Service! Let's check it out</a>
-            </div>
-        </div>
-        <div class="row justify-content-center ">
-            <div class="col-lg-8 ">
-                <p class="s3 ">"Unlock the full potential of your business with my tailored services, encompassing the realms of machine learning, data analysis, and web development, driving growth, insights, and seamless digital experiences "</p>
-            </div>
-        </div>
-
-
-        <div class="cards px-2 ">
-            <div class="row justify-content-center gx-2 ">
-                <div class="card c1 col-lg-3 ">
-                    <img src="static/images/machinelearning.png " alt=" ">
-                    <a>Machine Learning</a>
-                    <p>Dive into the world of machine learning as I leverage data-driven algorithms to unlock insights and drive intelligent decision-making</p>
-                </div>
-                <div class="card c2 col-lg-3 ">
-                    <img src="static/images/dataanalysis.png " alt=" ">
-                    <a>Data Analysis</a>
-                    <p>Uncover the hidden gems within your data through my expertise in data analysis, revealing valuable insights for informed decision-making</p>
-                </div>
-                <div class="card c1 col-lg-3 ">
-                    <img src="static/images/webdev.png " alt=" ">
-                    <a>Web Development</a>
-                    <p>Crafting immersive web experiences with precision, I blend creativity and technical prowess to build intuitive and impactful digital solutions</p>
-                </div>
-            </div>
-
-        </div>
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+           <div class="services-grid">
+    <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3 class="service-title">Web Design with AI</h3>
+        <p class="service-description">Building intelligent and interactive web experiences powered by Generative and Agentic AI technologies.</p>
     </div>
 
-
-    <!--Third Block-->
-    <div class="block-three " id="skills">
-
-        <h3>SKILLS</h3>
-        <div class="row justify-content-center ">
-            <div class="col-lg-7 ">
-                <p>"With a robust skill set spanning technical prowess, analytical thinking, strong leadership, and adaptability, I consistently deliver exceptional results "</p>
-            </div>
-        </div>
-        <div class="container ">
-            <div class="row skills justify-content-center px-4 ">
-                <div class="col-lg-2 col-md-3 col-6 skill sk-1 ">
-                    <img src="static/images/skills/python.png " alt=" ">
-                    <h5>Python</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-2 ">
-                    <img src="static/images/skills/ml.png " alt=" ">
-                    <h5>ML</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-1 ">
-                    <img src="static/images/skills/mysql.png " alt=" ">
-                    <h5>MySql</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-2 ">
-                    <img src="static/images/skills/powerbi.png " alt=" ">
-                    <h5>PowerBi</h5>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6 skill sk-1 ">
-                    <img src="static/images/skills/html.png " alt=" ">
-                    <h5>HTML</h5>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-6 skill sk-2 ">
-                    <img src="static/images/skills/css.png " alt=" ">
-                    <h5>CSS</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-1 ">
-                    <img src="static/images/skills/javascript.png " alt=" ">
-                    <h5>JavaScript</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-2 ">
-                    <img src="static/images/skills/bootstrap.png " alt=" ">
-                    <h5>BootStrap</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-1 ">
-                    <img src="static/images/skills/mongodb.png " alt=" ">
-                    <h5>MongoDB</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-2 ">
-                    <img src="static/images/skills/jquery.png " alt=" ">
-                    <h5>JQuery</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-1 ">
-                    <img src="static/images/skills/react.png " alt=" ">
-                    <h5>React</h5>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 skill sk-2 ">
-                    <img src="static/images/skills/excel.png " alt=" ">
-                    <h5>Excel</h5>
-                </div>
-            </div>
-        </div>
-
+    <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3 class="service-title">Machine Learning Solutions</h3>
+        <p class="service-description">Designing predictive and adaptive models that turn complex data into actionable business intelligence.</p>
     </div>
 
-    <!-- Block Four-->
-    <div class="block-four " id="projects">
-        <h3>PROJECTS</h3>
+    <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3 class="service-title">Data Analysis</h3>
+        <p class="service-description">Extracting insights and visualizing patterns from structured and unstructured data for smarter decision-making.</p>
+    </div>
+</div>
 
-        <div class="row justify-content-center ">
-            <div class="col-lg-8 ">
-                <p>"Embark on a journey through my projects, where the realms of machine learning, data analysis, and web development intertwine, yielding remarkable solutions and pushing boundaries of innovation "</p>
+        </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section class="portfolio-section" id="blogs" style="background: #1a1a1a;">
+        <div class="container">
+            <h2 class="section-title">Medium Blogs</h2>
+            
+            <div class="projects-container" id="blogsContainer">
+                <div class="projects-wrapper" id="blogsWrapper">
+                    <!-- Blogs will be inserted here by JavaScript -->
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info">
+                <p class="contact-item">📧 aditya.naranje@email.com</p>
+                <p class="contact-item">📍 Amravati, Maharashtra, IND</p>
+            </div>
+           <div class="social-links">
+    <a href="https://github.com/adityanaranje" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.twitter.com/aditya_naranje" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/anaranje" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://m.facebook.com/mahindra.dhoni.710" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/aditya.naranje7/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://adityanaranje.medium.com/" class="social-link" target="_blank"><i class="fab fa-medium"></i></a>
+    <a href="https://www.kaggle.com/adityanaranje" class="social-link" target="_blank"><i class="fab fa-kaggle"></i></a>
+    <a href="https://discord.com/channels/delta_venom" class="social-link" target="_blank"><i class="fab fa-discord"></i></a>
+</div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aditya Naranje. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const projects = [
+  { id: 1, title: "Research Agent (Agent Builder)", category: "Agentic AI", description: "Multi-agent AI workflow for real-time research and insights.", link: "https://github.com/adityanaranje/Agent-Builder-Research-Agent", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/agent-builder.png" },
+  { id: 2, title: "Github Events Notifier (n8n)", category: "Agentic AI", description: "Turns GitHub events into intelligent AI-powered notifications.", link: "https://github.com/adityanaranje/n8n-github-events-telegram-email-workflow", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/telegram-bot.png" },
+  { id: 3, title: "CODEVO", category: "Generative AI", description: "AI tool for automated code review and generation.", link: "https://github.com/adityanaranje/CODEVO", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/codevo.png" },
+  { id: 4, title: "Mobile Shop WhatsApp Agent (n8n)", category: "Agentic AI", description: "WhatsApp chatbot managing store orders and customer queries.", link: "https://github.com/adityanaranje/n8n-WhatsApp-Bot", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/whatsapp-bot.png" },
+  { id: 5, title: "Fitness Chatbot", category: "Generative AI", description: "AI fitness assistant for personalized workouts and nutrition.", link: "https://github.com/adityanaranje/FITNESS-CHATBOT", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/fitness-bot.png" },
+  { id: 6, title: "Sparkline", category: "Generative AI", description: "AI assistant that creates study plans from job links.", link: "https://github.com/adityanaranje/SparkLine", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/sparkline.png" },
+  { id: 7, title: "Story Generator", category: "Generative AI", description: "Story creation tool using LLMs and Streamlit interface.", link: "https://github.com/adityanaranje/STORY-GENERATOR", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/story-generator.png" },
+  { id: 8, title: "British Airways Analysis", category: "Data Analysis", description: "Data insights and visualization for British Airways dataset.", link: "https://github.com/adityanaranje/British-airways-forage", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/british-airways.png" },
+  { id: 9, title: "Cricket Data Analysis", category: "Data Analysis", description: "Analyzes T20 cricket statistics using Python and Streamlit.", link: "https://github.com/adityanaranje/T-20-Cricket-Data-Analysis-Using-Streamlit", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/cricket-analysis.png" },
+  { id: 10, title: "Onyx Challenges Data Analysis", category: "Data Analysis", description: "Power BI dashboard visualizing Onyx challenge performance.", link: "https://github.com/adityanaranje/Onyx-Data-DNA-Challenges", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/onyx.png" },
+  { id: 11, title: "Movie Recommendation", category: "Machine Learning", description: "Recommends movies using KNN and cosine similarity models.", link: "https://github.com/adityanaranje/MOVIE-RECOMMENDATION", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/movie.png" },
+  { id: 12, title: "Indian Crop Analysis", category: "Data Analysis", description: "SQL-based analysis of Indian crop data using Python.", link: "https://github.com/adityanaranje/SQL-For-India-Crop-Data-Analysis", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/sql-crop.png" },
+  { id: 13, title: "IPL Win Probability Predictor", category: "Machine Learning", description: "Predicts IPL match outcomes using regression models.", link: "https://github.com/adityanaranje/IPL-WIN-PROBABILITY-PREDICTOR", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/ipl-win.png" },
+  { id: 14, title: "Google App Store Analysis", category: "Data Analysis", description: "Analyzes Google Play Store app data and trends.", link: "https://github.com/adityanaranje/Google-App-Store-Analysis-Ineuron-Internship", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/google-app-store.png" },
+  { id: 15, title: "Health Care", category: "Machine Learning", description: "ML web app predicting diseases from patient symptoms.", link: "https://github.com/adityanaranje/HEALTH-CARE", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/health-care.png" },
+  { id: 16, title: "Store Sales Prediction", category: "Machine Learning", description: "Regression model predicting future retail sales data.", link: "https://github.com/adityanaranje/Store_Sales_Prediction", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/storesales.png" },
+  { id: 17, title: "Flight Fare Prediction", category: "Machine Learning", description: "Predicts flight fares using regression-based models.", link: "https://github.com/adityanaranje/FLIGHT-FARE-PREDICTION", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/flight-fare.png" },
+  { id: 18, title: "Face and Object Detection", category: "Machine Learning", description: "Computer vision app detecting faces and objects accurately.", link: "https://github.com/adityanaranje/COMPUTER-VISION-PROJECT", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/objec-face.png" },
+  { id: 19, title: "T20 Score Prediction", category: "Machine Learning", description: "Predicts T20 first innings score using regression models.", link: "https://github.com/adityanaranje/T20-1ST-INNING-SCORE-PREDICTION", image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/score-predict.png" },
+  { id: 20, title: "Book Recommendation", category: "Machine Learning", description: "Recommends books using collaborative filtering approach.", link: "https://github.com/adityanaranje/BOOK-RECOMMENDER", image: "hhttps://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Projects/book-recommender.png" }
+];
 
 
-        <div class="container ">
-            <div class="row justify-content-lg-evenly ">
-                <div class="ml-dev-projects box col-lg-5 ">
-                    <h5>ML and Development</h5>
 
-                    <div id="carouselExampleInterval1" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img1.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Health Care Prediction</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img2.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>IPL Win Probability Prection</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img3.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>T20 Score Prediction</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img4.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Water Potability Prediction</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img5.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Cirrhosis Prediction</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img6.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Book Recommender System</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img7.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Kidney Disease Prediction</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img8.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Breast Cancer Prediction</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img9.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Face Detection</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img10.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Object Detection</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img11.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Flight Fare Prediction</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img12.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Car Detection</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/ml and dev/img13.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Movie Recommendetion System</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval1" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval1" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+
+       const blogs = [
+  {
+    id: 1,
+    title: "Getting Started With Plotly",
+    date: "Jan 19, 2022",
+    excerpt: "Learn how to create interactive and visually appealing data visualizations using Plotly in Python — perfect for data science beginners.",
+    tags: ["Data Visualization", "Python", "Plotly"],
+    icon: "📊",
+    link: "https://medium.com/me/stats/post/ca5e8ffe4484?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
+    image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Blogs/Stats.png"
+  },
+  {
+    id: 2,
+    title: "Basic Of Stats in Python",
+    date: "Jan 11, 2022",
+    excerpt: "Understand the fundamentals of statistics and their implementation in Python for real-world data analysis projects.",
+    tags: ["Statistics", "Python", "Data Analysis"],
+    icon: "📈",
+    link: "https://medium.com/me/stats/post/9d150af9ef46?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
+    image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Blogs/plotly.png"
+  },
+  {
+    id: 3,
+    title: "T-20 Cricket Data Cleaning and Transform",
+    date: "Jan 6, 2022",
+    excerpt: "Step-by-step guide on cleaning and transforming raw T20 cricket data from JSON to CSV using Python for further analysis.",
+    tags: ["Python", "Data Cleaning", "ETL"],
+    icon: "🏏",
+    link: "https://medium.com/me/stats/post/bcb4b590e5a8?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
+    image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Blogs/datacleaning.png"
+  },
+  {
+    id: 4,
+    title: "T-20 Cricket Data Analysis",
+    date: "Jan 9, 2022",
+    excerpt: "Analyze T20 cricket statistics with Python and Streamlit to uncover patterns, trends, and player insights through interactive dashboards.",
+    tags: ["Data Analysis", "Python", "Streamlit"],
+    icon: "📊",
+    link: "https://medium.com/me/stats/post/b4c44a134584?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
+    image: "https://github.com/adityanaranje/MY-PORTFOLIO/blob/main/static/images/Blogs/dataanalysis.png"
+  }
+];
+
+
+        let currentCategory = 'all';
+
+        function renderProjects(category = 'all') {
+            const wrapper = document.getElementById('projectsWrapper');
+            const filteredProjects = category === 'all' 
+                ? projects 
+                : projects.filter(p => p.category === category);
+            
+            wrapper.innerHTML = filteredProjects.map(project => `
+                <div class="project-card" onclick="window.open('${project.link}', '_blank')">
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}">
                     </div>
-
-
-                </div>
-                <div class="analysis-projects box col-lg-5 ">
-                    <h5>Data Anlaysis</h5>
-
-                    <div id="carouselExampleInterval2" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img1.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Pie Sales Analysis</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img2.jpg" class="d-block w-100" height="250" alt="...">
-                                <div class="carousel-caption">
-                                    <h5>Forbes World's Billionaire</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img3.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>Noble Prize Winners</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img4.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>Resume Dashboard</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img5.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>Friends Series</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item " data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img6.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>Bigfoot Sighting Analysis</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item " data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img7.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>Pokemon Analysis</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item " data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img8.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>T20 Cricket Analysis</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item " data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img9.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>US International</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item " data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img10.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>Formula One Analysis</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item " data-bs-interval="4000">
-                                <img src="static/images/projects/data analysis/img11.jpg " class="d-block w-100 " height="250 " alt="... ">
-                                <div class="carousel-caption ">
-                                    <h5>Indian Crop Analysis</h5>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <button class="carousel-control-prev " type="button " data-bs-target="#carouselExampleInterval2 " data-bs-slide="prev ">
-                            <span class="carousel-control-prev-icon " aria-hidden="true "></span>
-                            <span class="visually-hidden ">Previous</span>
-                        </button>
-                        <button class="carousel-control-next " type="button " data-bs-target="#carouselExampleInterval2 " data-bs-slide="next ">
-                            <span class="carousel-control-next-icon " aria-hidden="true "></span>
-                            <span class="visually-hidden ">Next</span>
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Certifications -->
-
-    <div class="block-five " id="certificates ">
-        <h4>CERTIFICATES</h4>
-        <div class="container ">
-            <div class="row justify-content-evenly ">
-                <div class="connect col-lg-4 col-10 ">
-                    <h1>Got A Project! Let's Talk</h1>
-                    <p>"Let 's break barriers and build bridges together, connecting minds and hearts to create a transformative journey filled with mutual growth and shared success"</p>
-
-                </div>
-                <div class="certificate col-lg-5">
-                    <div id="carouselExampleInterval3" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="4000">
-                                <img src="static/images/certifications/img1.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img2.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img3.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img4.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img5.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img6.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img7.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img8.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img9.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img10.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img11.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img12.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img13.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                            <div class="carousel-item" data-bs-interval="4000">
-                                <img src="static/images/certifications/img14.jpg" class="d-block w-100" height="300" alt="...">
-
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval3" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval3" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                    <div class="project-info">
+                        <p class="project-category">${project.category.toUpperCase()}</p>
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            `).join('');
+        }
 
+        function getProjectEmoji(category) {
+            const emojis = {
+    "Generative AI": "🤖",
+    "Agentic AI": "🚀",
+    "Machine Learning": "🧠",
+    "Data Analysis": "📊"
+};
+            return emojis[category] || '✨';
+        }
 
+        function filterProjects(category) {
+            currentCategory = category;
+            
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Render filtered projects
+            renderProjects(category);
+            
+            // Reset scroll position
+            document.getElementById('projectsContainer').scrollLeft = 0;
+        }
 
-    <!-- Block Six -->
+        // Initialize projects on page load
+        renderProjects();
+        renderBlogs();
 
+        function renderBlogs() {
+            const wrapper = document.getElementById('blogsWrapper');
+            
+            wrapper.innerHTML = blogs.map(blog => `
+                <div class="blog-card" onclick="window.open('${blog.link}', '_blank')">
+                    <div class="blog-image">
+                        <img src="${blog.image}" alt="${blog.title}">
+                    </div>
+                    <div class="blog-info">
+                        <p class="blog-date">${blog.date}</p>
+                        <h3 class="blog-title">${blog.title}</h3>
+                        <p class="blog-excerpt">${blog.excerpt}</p>
+                        <div class="blog-tags">
+                            ${blog.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-    <div class="block-six" id="connect">
-        <div class="d-flex gap-lg-2 gap-md-2 justify-content-center gap-1  py-2">
-            <a href="https://www.linkedin.com/in/anaranje" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
-                    <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/linkedin.png" alt="">
-                </span>
-            </a>
-            <a href="https://github.com/adityanaranje" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
-                    <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/github.png" alt="">
-                </span>
-            </a>
-            <a href="mailto:aditya.naranje7@gmail.com" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-success-emphasis bg-success-subtle border border-success-subtle rounded-pill">
-                    <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/email.png" alt="">
-                </span>
-            </a>
-            <a href="https://www.instagram.com/aditya.naranje7/" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-pill">
-                    <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/instagram.png" alt="">
-                </span>
-            </a>
-            <a href="https://m.facebook.com/mahindra.dhoni.710" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
-                    <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/facebook.png" alt="">
-                </span>
-            </a>
-            <a href="https://www.twitter.com/aditya_naranje" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-pill">
-                <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/twitter.png" alt="">
-                </span>
-            </a>
-            <a href="https://adityanaranje.medium.com/" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-light-emphasis bg-light-subtle border border-dark-subtle rounded-pill">
-                    <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/medium.png" alt="">
-                </span>
-            </a>
-            <a href="https://discord.com/channels/delta_venom" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-info-emphasis bg-info-subtle border border-info-subtle rounded-pill">
-               
-                    <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/discord.png" alt="">
-                </span>
-            </a>
-            <a href="https://www.kaggle.com/adityanaranje" target="_blank">
-                <span class="badge d-flex align-items-center p-1 pe-0 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-pill">
-                    <img class="rounded-circle me-1" width="24" height="24" src="static/images/connect/kaggle.png" alt="">
-                </span>
-            </a>
-        </div>
-    </div>
+        // Theme toggle function
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        }
 
+        // Navigation functions
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.getElementById('menuToggle');
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
 
-    <!-- Copyright -->
-    <div class="cp">
-        <a>&#9400; Aditya Naranje</a>
-    </div>
-    <!-- <div class="copyright">
-        <div class="row justify-content-center">
-            <p class="col-4">
-                &#9400; <b>Aditya Naranje<b>
-                </p>
-        </div>
-    </div> -->
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.getElementById('menuToggle');
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
 
-
+        // Smooth scroll to sections
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
-
-</html>
-
-</html>
-
-</html>
-
 </html>
