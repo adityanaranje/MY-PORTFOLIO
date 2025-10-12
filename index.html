@@ -24,17 +24,23 @@
 
         /* Navigation */
         nav {
-            position: relative;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             width: 100%;
-            background: #1a1a1a;
+            background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(10px);
-            padding: 25px 0;
+            padding: 20px 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            transition: background 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 15px 0;
+            background: rgba(26, 26, 26, 0.98);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
 
         .nav-container {
@@ -1338,6 +1344,7 @@
     </script>
 </body>
 </html>
+
 
 
 
