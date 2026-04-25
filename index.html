@@ -201,6 +201,10 @@
             color: #aaa;
             transition: color 0.3s ease;
         }
+        .fade {
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+        }
 
         /* Portfolio Section */
         .portfolio-section {
@@ -998,7 +1002,9 @@
     <section class="hero" id="home">
         <h2>Hello I'm</h2>
         <h1>Aditya Naranje</h1>
-        <p class="hero-subtitle">Aspiring Gen AI & ML Enthusiast</p>
+        <p class="hero-subtitle">
+          <span id="animated-text">Gen AI Engineer</span>
+        </p>
     </section>
 
     <!-- Portfolio Section -->
@@ -1029,7 +1035,7 @@
                 <div class="about-image"></div>
                 <div class="about-text">
                     <h2>About Me</h2>
-                    <p>I'm a passionate Business Analyst with over 2 years of experience turning data into actionable insights and driving strategic decisions. I specialize in data analysis, business intelligence, and leveraging Gen AI to solve complex problems.</p>
+                    <p>I'm a passionate AI/ML Engineer with over 2 years of experience turning data into actionable insights and driving strategic decisions. I specialize in data analysis, business intelligence, and leveraging Gen AI to solve complex problems.</p>
                     <p>My approach combines analytical thinking with AI-driven solutions to deliver results that not only optimize processes but also create meaningful business impact.</p>
                    <div class="skills">
     <span class="skill-tag">Generative AI</span>
@@ -1140,7 +1146,7 @@
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-info">
-                <p class="contact-item">📧 aditya.naranje7@email.com</p>
+                <p class="contact-item">📧 aditya.naranje7@gmail.com</p>
                 <p class="contact-item">📍 Amravati, Maharashtra, IND</p>
             </div>
            <div class="social-links">
@@ -1164,6 +1170,28 @@
     </footer>
 
     <script>
+        const roles = [
+            "Gen AI Engineer",
+            "ML Engineer",
+            "Data Analyst",
+            "Lifelong Learner"
+          ];
+        
+          let index = 0;
+          const textElement = document.getElementById("animated-text");
+        
+          setInterval(() => {
+            textElement.classList.add("fade");
+        
+            setTimeout(() => {
+              index = (index + 1) % roles.length;
+              textElement.textContent = roles[index];
+              textElement.classList.remove("fade");
+            }, 500);
+        
+          }, 2000);
+
+        
         const projects = [
   { id: 1, title: "Research Agent (Agent Builder)", category: "Agentic AI", description: "Multi-agent AI workflow for real-time research and insights.", link: "https://github.com/adityanaranje/Agent-Builder-Research-Agent", image: "static/images/Projects/agent-builder.png" },
   { id: 2, title: "Github Events Notifier (n8n)", category: "Agentic AI", description: "Turns GitHub events into intelligent AI-powered notifications.", link: "https://github.com/adityanaranje/n8n-github-events-telegram-email-workflow", image: "static/images/Projects/telegram-bot.png" },
@@ -1195,8 +1223,39 @@
 
 
        const blogs = [
-  {
+
+ {
     id: 1,
+    title: "PyTorch vs TensorFlow — Iron Man vs Captain America of Deep Learning",
+    date: "Apr 25, 2026",
+    excerpt: "A practical and intuitive comparison of PyTorch and TensorFlow using real-world examples, code, and a fun Marvel analogy to help you choose the right framework for learning, experimentation, and production.",
+    tags: ["Deep Learning", "PyTorch", "TensorFlow", "Machine Learning", "AI"],
+    icon: "📊",
+    link: "https://medium.com/@adityanaranje/pytorch-vs-tensorflow-iron-man-vs-captain-america-of-deep-learning-8749cbcc0033",
+    image: "static/images/Blogs/blog1.png"
+  }, 
+  {
+    id: 2,
+    title: "A Smart RAG Architecture with LangGraph",
+    date: "Apr 06, 2026",
+    excerpt: "Explore a modern Retrieval-Augmented Generation architecture using LangGraph to build smarter, context-aware AI systems with better control, memory, and real-world applicability.",
+    tags: ["RAG", "LangGraph", "LLM", "Generative AI", "AI Architecture"],
+    icon: "📊",
+    link: "https://medium.com/@adityanaranje/a-smart-rag-architecture-with-langgraph-03e294cd809c",
+    image: "static/images/Blogs/blog2.png"
+  },
+  {
+    id: 3,
+    title: "Prompting vs RAG vs Fine-Tuning — Explained with Real-Life Examples",
+    date: "Mar 16, 2026",
+    excerpt: "Understand the key differences between prompting, Retrieval-Augmented Generation, and fine-tuning with simple real-life examples, helping you choose the right approach for building effective AI applications.",
+    tags: ["LLM", "Prompt Engineering", "RAG", "Fine Tuning", "Generative AI"],
+    icon: "📊",
+    link: "https://medium.com/@adityanaranje/prompting-vs-rag-vs-fine-tuning-explained-with-real-life-examples-bf5ec841f39f",
+    image: "static/images/Blogs/blog3.png"
+  },         
+  {
+    id: 4,
     title: "Getting Started With Plotly",
     date: "Jan 19, 2022",
     excerpt: "Learn how to create interactive and visually appealing data visualizations using Plotly in Python — perfect for data science beginners.",
@@ -1206,7 +1265,7 @@
     image: "static/images/Blogs/Stats.png"
   },
   {
-    id: 2,
+    id: 5,
     title: "Basic Of Stats in Python",
     date: "Jan 11, 2022",
     excerpt: "Understand the fundamentals of statistics and their implementation in Python for real-world data analysis projects.",
@@ -1216,7 +1275,7 @@
     image: "static/images/Blogs/plotly.png"
   },
   {
-    id: 3,
+    id: 6,
     title: "T-20 Cricket Data Cleaning and Transform",
     date: "Jan 6, 2022",
     excerpt: "Step-by-step guide on cleaning and transforming raw T20 cricket data from JSON to CSV using Python for further analysis.",
@@ -1226,7 +1285,7 @@
     image: "static/images/Blogs/datacleaning.png"
   },
   {
-    id: 4,
+    id: 7,
     title: "T-20 Cricket Data Analysis",
     date: "Jan 9, 2022",
     excerpt: "Analyze T20 cricket statistics with Python and Streamlit to uncover patterns, trends, and player insights through interactive dashboards.",
