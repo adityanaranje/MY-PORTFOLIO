@@ -108,7 +108,7 @@
       date: "Aug 30, 2026", read: "13 min", tags: ["Agentic AI", "AI Architecture", "Production AI"],
       excerpt: "How the moving parts of a production agentic AI system — orchestration, tool calling, memory, and validation — map onto the roles in a busy restaurant kitchen, making AI system design intuitive.",
       img: "static/images/Blogs/agentic-restaurant.jpg",
-      link: "https://adityanaranje.medium.com/",
+      link: "https://medium.com/@adityanaranje/designing-production-grade-agentic-ai-systems-explained-through-a-restaurant-308c97abb524?sharedUserId=adityanaranje",
       newest: true,
     },
     {
