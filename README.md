@@ -13,7 +13,7 @@ Fully static, so it deploys directly to GitHub Pages.
 - `index.html` — semantic markup, SEO/Open Graph metadata, JSON-LD
 - `css/styles.css` — design system (CSS variables), dark/light themes, responsive layout
 - `js/main.js` — project/cert/blog rendering, nav, theme toggle, scrollspy, reveal animations
-- `static/` — images, project screenshots, certificates and the résumé PDF
+- `static/` — images, project screenshots, certificates and the CV PDF (`static/docs/CV.pdf`)
 
 ## Sections
 
