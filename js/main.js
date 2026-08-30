@@ -1,7 +1,7 @@
 /* =============================================================
    Aditya Naranje — Portfolio interactions
    Data + rendering + nav + theme + reveal + lightbox
-   All factual content sourced from the original portfolio/resume.
+   All factual content sourced from the résumé / original portfolio.
    ============================================================= */
 (function () {
   "use strict";
@@ -10,58 +10,58 @@
      DATA
   ------------------------------------------------------------ */
 
-  // Featured AI projects (strongest work first), with architecture
+  // Featured production AI projects (strongest work first), with pipeline
   const featured = [
     {
-      title: "Agent Builder — Research Agent",
-      category: "Agentic AI",
-      image: "static/images/Projects/agent-builder.png",
-      link: "https://github.com/adityanaranje/Agent-Builder-Research-Agent",
-      desc: "A multi-agent AI workflow that plans and executes real-time research. Orchestrated agents break a query into subtasks, gather and synthesise findings, and return structured insights.",
-      tags: ["LangGraph", "AI Agents", "LLMs", "Python", "LangSmith"],
-      flow: ["Query", "Planner Agent", "Research Agents", "Synthesis", "Insights"],
-    },
-    {
-      title: "Isolated RAG Chatbot",
+      title: "Isolated Multi-Bot RAG System",
       category: "Generative AI",
       image: "static/images/Projects/isolated-rag-bot.png",
       link: "https://github.com/adityanaranje/ISOLATED-RAG-CHATBOT",
-      desc: "Dockerised retrieval-augmented chatbot with bot-level context separation. Each bot maintains its own isolated knowledge base and conversation memory for secure multi-tenant use.",
-      tags: ["RAG", "OpenAI", "Pinecone", "Docker", "FastAPI"],
-      flow: ["User", "Embedding", "Pinecone Vector DB", "Retrieval", "LLM Answer"],
+      desc: "A production multi-bot RAG platform (10+ bots) with isolated Pinecone namespaces and LangGraph-based agent routing, improving response relevance by ~35%. An LLM evaluation/validation loop (3-retry relevance scoring) cut hallucinations by ~30%; deployed on AWS EC2 with Docker, Nginx and Watchtower for automated updates.",
+      tags: ["LangGraph", "Pinecone", "Docker", "AWS EC2", "RAG"],
+      flow: ["User query", "LangGraph router", "Isolated namespace", "Retrieval + eval", "Answer"],
     },
     {
-      title: "CodeGuard — Automated PR Reviewer",
+      title: "CodeGuard — Automated PR Review Agent",
       category: "Agentic AI",
       image: "static/images/Projects/code-review.png",
       link: "https://github.com/adityanaranje/CodeGuard",
-      desc: "An LLM-powered agent that reviews pull requests against an organisation's coding rules before merge, enforcing consistency and catching issues automatically in the CI flow.",
-      tags: ["LLMs", "GitHub Actions", "AI Agents", "Prompting", "CI/CD"],
-      flow: ["Pull Request", "Rule Engine", "LLM Review", "Inline Comments", "Merge Gate"],
+      desc: "An LLM agent (LangGraph + Flask) that reviews GitHub pull requests with severity scoring and inline fix suggestions, cutting manual review effort by ~85% and improving PR turnaround by ~70%.",
+      tags: ["LangGraph", "Flask", "LLMs", "GitHub Actions", "Code review"],
+      flow: ["Pull request", "LangGraph agent", "Severity scoring", "Inline fixes", "Merge gate"],
     },
     {
-      title: "AWS Bedrock RAG Agent",
+      title: "AI Email Job Agent — Telegram Bot",
+      category: "Agentic AI",
+      image: "static/images/Projects/email-summary.png",
+      link: "https://github.com/adityanaranje/EMAIL-SUMMARY-AGENT-TELEGRAM",
+      desc: "An autonomous, fully serverless agent that monitors Gmail via OAuth2, classifies emails and extracts job metadata with LangChain/OpenAI, then pushes structured alerts to Telegram — running on a scheduled GitHub Actions CI/CD (15-min cadence) with no dedicated infrastructure.",
+      tags: ["LangChain", "OpenAI", "Gmail API", "Telegram", "GitHub Actions"],
+      flow: ["Gmail (OAuth2)", "LLM classify", "Extract jobs", "Telegram alert", "Serverless cron"],
+    },
+    {
+      title: "RAG Chatbot — Amazon Bedrock AgentCore",
       category: "Generative AI",
       image: "static/images/Projects/aws-bedrock.png",
       link: "https://github.com/adityanaranje/RAG-Chatbot-AWS-Bedrock-Agentcore",
-      desc: "A fitness RAG chatbot built on Amazon Bedrock with conversational memory and FAISS vector retrieval, grounding answers in domain knowledge rather than raw generation.",
-      tags: ["AWS Bedrock", "FAISS", "RAG", "LLM Memory", "Python"],
-      flow: ["Question", "FAISS Retrieval", "Bedrock LLM", "Memory", "Response"],
+      desc: "A RAG chatbot using FAISS over 500+ knowledge chunks (~40% relevance gain) with Groq Llama-3.3-70B and persistent, thread-based memory. Containerized and deployed via the AWS AgentCore CLI to Amazon ECR and the Bedrock runtime.",
+      tags: ["AWS Bedrock", "AgentCore", "FAISS", "Groq Llama-3.3", "LangChain"],
+      flow: ["Question", "FAISS (500+ chunks)", "Bedrock / Groq LLM", "Memory", "Answer"],
     },
   ];
 
   // Remaining projects
   const projects = [
+    { title: "Agent Builder — Research Agent", category: "Agentic AI", image: "static/images/Projects/agent-builder.png", link: "https://github.com/adityanaranje/Agent-Builder-Research-Agent", desc: "Multi-agent LangGraph workflow that plans and executes real-time research, breaking a query into subtasks and synthesising structured insights.", tags: ["LangGraph", "AI Agents", "LLMs", "LangSmith"] },
     { title: "GitHub Events Notifier (n8n)", category: "Agentic AI", image: "static/images/Projects/telegram-bot.png", link: "https://github.com/adityanaranje/n8n-github-events-telegram-email-workflow", desc: "Turns GitHub events into intelligent AI-powered notifications routed through Telegram and email.", tags: ["n8n", "Telegram", "Automation", "APIs"] },
     { title: "CODEVO — Repository Q&A Bot", category: "Generative AI", image: "static/images/Projects/codevo.png", link: "https://github.com/adityanaranje/CODEVO", desc: "AI tool that answers questions about a GitHub repository by indexing and retrieving from its codebase.", tags: ["RAG", "LLMs", "GitHub API", "Python"] },
     { title: "WhatsApp Shop Agent (n8n)", category: "Agentic AI", image: "static/images/Projects/whatsapp-bot.png", link: "https://github.com/adityanaranje/n8n-WhatsApp-Bot", desc: "WhatsApp chatbot that manages store orders and answers customer queries through automated workflows.", tags: ["n8n", "WhatsApp", "AI Agents", "Automation"] },
     { title: "Fitness Chatbot", category: "Generative AI", image: "static/images/Projects/fitness-bot.png", link: "https://github.com/adityanaranje/FITNESS-CHATBOT", desc: "AI fitness assistant delivering personalised workout and nutrition guidance through conversation.", tags: ["LLMs", "Chatbots", "Python", "Streamlit"] },
     { title: "SparkLine", category: "Generative AI", image: "static/images/Projects/sparkline.png", link: "https://github.com/adityanaranje/SparkLine", desc: "AI assistant that generates focused study plans from job-listing links to help close skill gaps.", tags: ["LLMs", "Prompting", "Python", "Streamlit"] },
     { title: "Story Generator", category: "Generative AI", image: "static/images/Projects/story-generator.png", link: "https://github.com/adityanaranje/STORY-GENERATOR", desc: "Interactive story-creation tool powered by LLMs with a Streamlit interface.", tags: ["LLMs", "Streamlit", "Python"] },
-    { title: "Email Summary Agent — Telegram Bot", category: "Agentic AI", image: "static/images/Projects/email-summary.png", link: "https://github.com/adityanaranje/EMAIL-SUMMARY-AGENT-TELEGRAM", desc: "Automated agent that summarises incoming emails and delivers concise digests to Telegram.", tags: ["AI Agents", "LLMs", "Telegram", "Automation"] },
     { title: "Movie Recommendation System", category: "Machine Learning", image: "static/images/Projects/movie.png", link: "https://github.com/adityanaranje/MOVIE-RECOMMENDATION", desc: "Recommends movies using KNN and cosine similarity over content features.", tags: ["Scikit-Learn", "KNN", "Cosine Similarity", "Python"] },
     { title: "Book Recommender", category: "Machine Learning", image: "static/images/Projects/book-recommender.png", link: "https://github.com/adityanaranje/BOOK-RECOMMENDER", desc: "Recommends books using a collaborative-filtering approach.", tags: ["Machine Learning", "Recommenders", "Python"] },
-    { title: "IPL Win Probability Predictor", category: "Machine Learning", image: "static/images/Projects/ipl-win.png", link: "https://github.com/adityanaranje/IPL-WIN-PROBABILITY-PREDICTOR", desc: "Predicts IPL match outcomes; logistic-replacement classifier reaching ~80% accuracy, deployed as a web app.", tags: ["Logistic Regression", "Pandas", "Streamlit"] },
+    { title: "IPL Win Probability Predictor", category: "Machine Learning", image: "static/images/Projects/ipl-win.png", link: "https://github.com/adityanaranje/IPL-WIN-PROBABILITY-PREDICTOR", desc: "Predicts IPL match outcomes with a classifier reaching ~80% accuracy, deployed as a web app.", tags: ["Logistic Regression", "Pandas", "Streamlit"] },
     { title: "T20 Score Prediction", category: "Machine Learning", image: "static/images/Projects/score-predict.png", link: "https://github.com/adityanaranje/T20-1ST-INNING-SCORE-PREDICTION", desc: "Predicts a T20 first-innings total from in-match state using regression models.", tags: ["Regression", "Machine Learning", "Python"] },
     { title: "Health Care — Disease Prediction", category: "Machine Learning", image: "static/images/Projects/health-care.png", link: "https://github.com/adityanaranje/HEALTH-CARE", desc: "ML web app that predicts disease from patient symptoms using trained classification models.", tags: ["Classification", "Flask", "Scikit-Learn"] },
     { title: "Store Sales Prediction", category: "Machine Learning", image: "static/images/Projects/storesales.png", link: "https://github.com/adityanaranje/Store_Sales_Prediction", desc: "Regression model that forecasts future retail sales from historical data.", tags: ["Regression", "Feature Engineering", "Python"] },
@@ -74,7 +74,16 @@
     { title: "Google App Store Analysis", category: "Data Analysis", image: "static/images/Projects/google-app-store.png", link: "https://github.com/adityanaranje/Google-App-Store-Analysis-Ineuron-Internship", desc: "Analysis of Google Play Store apps — cleaning, rating/install trends and insights (iNeuron internship).", tags: ["Python", "Pandas", "Data Cleaning"] },
   ];
 
-  // Certifications (real — match images in static/images/certifications)
+  // Featured credentials (from résumé). `img` opens the real scan in the lightbox.
+  const featuredCerts = [
+    { name: "Generative AI with LangChain & Hugging Face", issuer: "Udemy", img: null },
+    { name: "Data Science", issuer: "IBM", img: "static/images/certifications/img5.jpg" },
+    { name: "Machine Learning", issuer: "Internshala Trainings", img: "static/images/certifications/img2.jpg" },
+    { name: "Neural Networks", issuer: "LinkedIn Learning", img: null },
+    { name: "Feature Engineering", issuer: "Kaggle", img: null },
+  ];
+
+  // Certificate scans (real — match images in static/images/certifications)
   const certifications = [
     { name: "Nasscom Python — Top Performer", issuer: "Coding Ninjas", date: "2022", img: "static/images/certifications/img3.jpg" },
     { name: "Data Science Training — 100% Score", issuer: "Internshala Trainings", date: "2021", img: "static/images/certifications/img9.jpg" },
@@ -92,7 +101,7 @@
     { name: "HTML Course", issuer: "Sololearn", date: "2021", img: "static/images/certifications/img10.jpg" },
   ];
 
-  // Writing — AI/LLM articles with public links (older 2022 posts use private Medium stats URLs)
+  // Writing — AI/LLM articles with public links
   const blogs = [
     {
       title: "A Smart RAG Architecture with LangGraph",
@@ -140,9 +149,6 @@
     sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
     moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
     zoom: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>',
-    cap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>',
-    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>',
-    pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
   };
 
   /* ------------------------------------------------------------
@@ -202,7 +208,7 @@
   }
 
   function renderProjects(filter) {
-    // Featured AI projects lead the full grid; category filters show only matches
+    // Featured production projects lead the full grid; category filters show only matches
     const featuredHtml =
       filter === "all" ? featured.map((p, i) => featuredCard(p, (i % 2) + 1)).join("") : "";
     const list = filter === "all" ? projects : projects.filter((p) => p.category === filter);
@@ -224,6 +230,22 @@
   /* ------------------------------------------------------------
      RENDER: certifications
   ------------------------------------------------------------ */
+  // Featured credentials (from résumé)
+  const featuredCertEl = document.getElementById("featuredCertGrid");
+  featuredCertEl.innerHTML = featuredCerts
+    .map((c, i) => {
+      const inner = `
+        <span class="fc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg></span>
+        <div class="fc-name">${c.name}</div>
+        <div class="fc-issuer">${c.issuer}</div>
+        ${c.img ? `<span class="fc-view">View certificate ${ICON.arrow}</span>` : `<span class="fc-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Certified</span>`}`;
+      if (c.img) {
+        return `<button class="featured-cert-card is-image reveal" data-delay="${(i % 3) + 1}" data-img="${c.img}" data-title="${c.name}" data-issuer="${c.issuer}" aria-label="View certificate: ${c.name} from ${c.issuer}">${inner}</button>`;
+      }
+      return `<div class="featured-cert-card reveal" data-delay="${(i % 3) + 1}">${inner}</div>`;
+    })
+    .join("");
+
   const certEl = document.getElementById("certGrid");
   certEl.innerHTML = certifications
     .map(
@@ -281,10 +303,12 @@
     lightbox.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
   }
-  certEl.addEventListener("click", (e) => {
-    const card = e.target.closest(".cert-card");
+  function onCertClick(e) {
+    const card = e.target.closest(".cert-card, .featured-cert-card.is-image");
     if (card) openLightbox(card);
-  });
+  }
+  certEl.addEventListener("click", onCertClick);
+  featuredCertEl.addEventListener("click", onCertClick);
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox || e.target.closest("#lbClose")) closeLightbox();
   });
@@ -376,18 +400,14 @@
   /* ------------------------------------------------------------
      Hero role rotator (typewriter)
   ------------------------------------------------------------ */
-  const roles = ["AI/ML Engineer", "RAG & LLM Systems", "AI Agents · LangGraph", "Python · Data Science"];
+  const roles = ["AI/ML Engineer", "RAG & LLM Agents", "LangGraph · MCP Tools", "AWS · Production AI"];
   const roleEl = document.getElementById("heroRole");
   let rIdx = 0, cIdx = 0, deleting = false;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function tick() {
     const word = roles[rIdx];
-    if (deleting) {
-      cIdx--;
-    } else {
-      cIdx++;
-    }
+    if (deleting) { cIdx--; } else { cIdx++; }
     roleEl.textContent = word.slice(0, cIdx);
     let delay = deleting ? 45 : 90;
     if (!deleting && cIdx === word.length) { delay = 1800; deleting = true; }
@@ -406,17 +426,14 @@
   function setIcon(selector, icon) {
     document.querySelectorAll(selector).forEach((el) => { el.innerHTML = icon; });
   }
-  // Hero social (order in HTML: github, linkedin, x, medium, kaggle)
   const heroSocial = document.querySelectorAll(".hero-social a");
-  [["github", ICON.github], ["linkedin", ICON.linkedin], ["x", ICON.x], ["medium", ICON.medium], ["kaggle", ICON.kaggle]].forEach(([key, svg], i) => {
-    if (heroSocial[i]) heroSocial[i].innerHTML = svg;
+  [["github", ICON.github], ["linkedin", ICON.linkedin], ["x", ICON.x], ["medium", ICON.medium], ["kaggle", ICON.kaggle]].forEach((pair, i) => {
+    if (heroSocial[i]) heroSocial[i].innerHTML = pair[1];
   });
-  // Footer social
   setIcon(".fs-github", ICON.github);
   setIcon(".fs-linkedin", ICON.linkedin);
   setIcon(".fs-x", ICON.x);
   setIcon(".fs-medium", ICON.medium);
-  // Contact chips
   setIcon(".ci-mail", ICON.mail);
   setIcon(".ci-linkedin", ICON.linkedin);
   setIcon(".ci-github", ICON.github);

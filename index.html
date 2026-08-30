@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary SEO -->
-  <title>Aditya Naranje — AI/ML Engineer | LLMs, RAG &amp; AI Agents</title>
-  <meta name="description" content="Aditya Naranje is an AI/ML Engineer building intelligent systems with LLMs, Retrieval-Augmented Generation (RAG), AI Agents, LangChain, LangGraph and Python. Explore agentic workflows, RAG chatbots and machine-learning projects.">
+  <title>Aditya Naranje — AI/ML Engineer | RAG, LLM Agents &amp; Generative AI</title>
+  <meta name="description" content="Aditya Naranje is an AI/ML Engineer with 2 years building production-ready RAG systems, LLM agents and multi-agent workflows with LangGraph, MCP, Python and AWS. Explore production AI projects, evaluation and cloud deployment.">
   <meta name="author" content="Aditya Naranje">
-  <meta name="keywords" content="Aditya Naranje, AI Engineer, ML Engineer, Generative AI, Agentic AI, RAG, LLM, LangChain, LangGraph, AI Agents, Python, Machine Learning, Portfolio">
+  <meta name="keywords" content="Aditya Naranje, AI Engineer, ML Engineer, Generative AI, LLM Agents, RAG, Multi-Agent Systems, LangChain, LangGraph, MCP, AWS Bedrock, pgvector, Python, Machine Learning, Portfolio">
   <link rel="canonical" href="https://adityanaranje.github.io/MY-PORTFOLIO/">
 
   <!-- Open Graph -->
@@ -45,6 +45,8 @@
     "url": "https://adityanaranje.github.io/MY-PORTFOLIO/",
     "email": "aditya.naranje7@gmail.com",
     "address": { "@type": "PostalAddress", "addressLocality": "Amravati", "addressRegion": "Maharashtra", "addressCountry": "IN" },
+    "worksFor": { "@type": "Organization", "name": "Nvest Solution Private Limited" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Prof. Ram Meghe Institute of Technology & Research, SGBAU" },
     "sameAs": [
       "https://github.com/adityanaranje",
       "https://www.linkedin.com/in/anaranje",
@@ -52,7 +54,7 @@
       "https://adityanaranje.medium.com/",
       "https://www.kaggle.com/adityanaranje"
     ],
-    "knowsAbout": ["LLMs","RAG","AI Agents","LangChain","LangGraph","Python","Machine Learning","Deep Learning","NLP","Generative AI"]
+    "knowsAbout": ["LLMs","RAG","LLM Agents","Multi-Agent Systems","MCP","LangChain","LangGraph","AWS Bedrock","pgvector","Pinecone","FAISS","Python","Machine Learning","Model Evaluation","Generative AI"]
   }
   </script>
 </head>
@@ -97,13 +99,13 @@
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="container hero-inner">
         <div class="hero-copy">
-          <span class="hero-badge"><span class="status-dot" aria-hidden="true"></span> Open to AI/ML opportunities</span>
-          <h1>Aditya Naranje<br><span class="accent">builds intelligent systems.</span></h1>
+          <span class="hero-badge"><span class="status-dot" aria-hidden="true"></span> Senior Executive — AI/ML &amp; Generative AI · Nvest Solution</span>
+          <h1>Aditya Naranje<br><span class="accent">builds production AI.</span></h1>
           <p class="hero-role"><span id="heroRole"></span><span class="caret" aria-hidden="true"></span></p>
           <p class="hero-desc">
-            I'm an <strong>AI/ML Engineer</strong> designing and shipping <strong>LLM applications,
-            retrieval-augmented generation (RAG)</strong> and <strong>autonomous AI agents</strong> —
-            from multi-agent research workflows to production RAG chatbots with LangChain, LangGraph and Python.
+            I'm an <strong>AI/ML Engineer with 2 years of experience</strong> designing, deploying and evaluating
+            <strong>RAG systems, LLM agents and multi-agent workflows</strong> — with LangGraph, MCP tool calling
+            and AWS — that ship to production and drive measurable automation.
           </p>
           <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">View Projects
@@ -131,24 +133,24 @@
               <span class="terminal-title">rag_pipeline.py — agent runtime</span>
             </div>
             <div class="terminal-body">
-              <div class="t-line"><span class="prompt">$</span> <span class="cmd">python run_agent.py --task research</span></div>
-              <div class="t-line"><span class="out">→ orchestrating with LangGraph…</span></div>
+              <div class="t-line"><span class="prompt">$</span> <span class="cmd">python deploy_agent.py --mcp --rag</span></div>
+              <div class="t-line"><span class="out">→ orchestrating with LangGraph on AWS…</span></div>
               <div class="t-pipe">
                 <span class="t-node">User query</span><span class="t-arrow">→</span>
-                <span class="t-node">Planner</span><span class="t-arrow">→</span>
-                <span class="t-node">Tools</span>
+                <span class="t-node">MCP tools</span><span class="t-arrow">→</span>
+                <span class="t-node">Agent</span>
               </div>
               <div class="t-pipe">
+                <span class="t-node">pgvector</span><span class="t-arrow">→</span>
                 <span class="t-node">Retrieval</span><span class="t-arrow">→</span>
-                <span class="t-node">Vector DB</span><span class="t-arrow">→</span>
                 <span class="t-node">LLM</span>
               </div>
-              <div class="t-line"><span class="out">✓ context grounded · ✓ answer verified</span></div>
-              <div class="t-line"><span class="prompt">&gt;</span> <span class="cmd">response delivered in 1.4s</span></div>
+              <div class="t-line"><span class="out">✓ grounded · ✓ evaluated · hallucinations −30%</span></div>
+              <div class="t-line"><span class="prompt">&gt;</span> <span class="cmd">PR review effort −85%</span></div>
             </div>
           </div>
-          <span class="float-tag f1"><span class="dot"></span> LangGraph</span>
-          <span class="float-tag f2"><span class="dot"></span> RAG · Pinecone</span>
+          <span class="float-tag f1"><span class="dot"></span> LangGraph · MCP</span>
+          <span class="float-tag f2"><span class="dot"></span> RAG · pgvector</span>
         </div>
       </div>
     </section>
@@ -156,10 +158,10 @@
     <!-- ================= Stats ================= -->
     <section class="stats" aria-label="Highlights">
       <div class="container stats-inner">
-        <div class="stat reveal"><div class="stat-num">24<span class="plus">+</span></div><div class="stat-label">Projects shipped</div></div>
-        <div class="stat reveal" data-delay="1"><div class="stat-num">14</div><div class="stat-label">Certifications</div></div>
-        <div class="stat reveal" data-delay="2"><div class="stat-num">8</div><div class="stat-label">Technical articles</div></div>
-        <div class="stat reveal" data-delay="3"><div class="stat-num">9.8<span class="plus">/10</span></div><div class="stat-label">B.E. CGPA</div></div>
+        <div class="stat reveal"><div class="stat-num">2<span class="plus">+ yrs</span></div><div class="stat-label">Building production AI</div></div>
+        <div class="stat reveal" data-delay="1"><div class="stat-num">85<span class="plus">%</span></div><div class="stat-label">Less manual PR review</div></div>
+        <div class="stat reveal" data-delay="2"><div class="stat-num">10<span class="plus">+</span></div><div class="stat-label">RAG bots in production</div></div>
+        <div class="stat reveal" data-delay="3"><div class="stat-num">9.14<span class="plus">/10</span></div><div class="stat-label">B.E. CGPA</div></div>
       </div>
     </section>
 
@@ -173,31 +175,33 @@
           </div>
           <div class="about-text reveal" data-delay="1">
             <span class="eyebrow">About</span>
-            <h2 class="about-h2">Engineering AI systems that turn language into reliable software.</h2>
+            <h2 class="about-h2">Engineering AI systems that ship — and hold up in production.</h2>
             <p>
-              I'm <strong>Aditya Naranje</strong>, an AI/ML Engineer focused on the applied side of modern AI —
-              building <strong>LLM-powered applications, retrieval-augmented generation pipelines and autonomous agents</strong>
-              that solve real workflows rather than demo well.
+              I'm <strong>Aditya Naranje</strong>, an AI/ML Engineer with <strong>2 years of experience designing,
+              deploying and evaluating production-ready AI</strong>. At Nvest Solution I build <strong>LLM agents,
+              multi-agent RAG services and MCP tool integrations</strong> for insurance workflows — with multi-tenant
+              data scoping, human-in-the-loop review and rigorous model evaluation.
             </p>
             <p>
-              My foundation is in <strong>machine learning, data science and Python engineering</strong>. I've worked across
-              data analysis internships, predictive modelling and end-to-end ML web apps, and now concentrate on agentic
-              systems with <strong>LangChain, LangGraph, Pinecone, AWS Bedrock and FastAPI</strong> — always with evaluation,
-              memory and deployment in mind.
+              My toolkit spans <strong>LangGraph, LangChain, MCP, RAG, vector search (pgvector, Pinecone, FAISS)</strong>,
+              Python and <strong>AWS</strong> (Bedrock, Lambda, EC2, SageMaker), plus the ML layer — CatBoost/scikit-learn,
+              Optuna tuning and champion/challenger promotion. I focus on translating business problems into scalable AI
+              with measurable gains in automation, reliability and efficiency.
             </p>
             <div class="about-points">
-              <div class="about-point"><span class="ai"></span><div><b>RAG &amp; LLM apps</b><span>Grounding model output in vector retrieval and memory.</span></div></div>
-              <div class="about-point"><div><b>AI agents &amp; workflows</b><span>Multi-agent planning, tools and automation with LangGraph &amp; n8n.</span></div></div>
-              <div class="about-point"><div><b>Machine learning</b><span>Classification, regression, NLP, recommenders and computer vision.</span></div></div>
-              <div class="about-point"><div><b>Data to decision</b><span>Analysis, dashboards and storytelling with Python and Power BI.</span></div></div>
+              <div class="about-point"><div><b>Production RAG</b><span>Multi-tenant retrieval with hybrid BM25 + vector search, embeddings and evaluation.</span></div></div>
+              <div class="about-point"><div><b>LLM &amp; multi-agent systems</b><span>LangGraph orchestration, tool calling, MCP servers and human-in-the-loop.</span></div></div>
+              <div class="about-point"><div><b>ML evaluation &amp; monitoring</b><span>AUC/F1-gated champion/challenger for churn, propensity and lead-scoring.</span></div></div>
+              <div class="about-point"><div><b>Cloud &amp; CI/CD</b><span>AWS deployment, Docker, GitHub Actions, FastAPI/Flask and serverless automations.</span></div></div>
             </div>
             <div class="focus-tags">
               <span class="focus-tag">Generative AI</span>
-              <span class="focus-tag">Agentic AI</span>
-              <span class="focus-tag">Machine Learning</span>
-              <span class="focus-tag">Data Analysis</span>
+              <span class="focus-tag">LLM Agents</span>
+              <span class="focus-tag">RAG</span>
+              <span class="focus-tag">LangGraph</span>
+              <span class="focus-tag">MCP</span>
+              <span class="focus-tag">AWS</span>
               <span class="focus-tag">Python</span>
-              <span class="focus-tag">Data Visualization</span>
             </div>
           </div>
         </div>
@@ -218,15 +222,15 @@
               <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
               <h3 class="cap-title">RAG Systems</h3>
             </div>
-            <p class="cap-desc">Retrieval-augmented pipelines that ground LLMs in your own data with isolated, searchable knowledge bases.</p>
+            <p class="cap-desc">Multi-tenant retrieval services grounding LLMs in private data — hybrid BM25 + vector search, embeddings and relevance evaluation.</p>
             <div class="flow">
-              <span class="flow-step">Retrieval</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Rerank</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Context</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Generation</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Verify</span>
+              <span class="flow-step">Parse</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Embed</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Retrieve</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Generate</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Evaluate</span>
             </div>
-            <p class="cap-foot"><span class="ref">//</span> Isolated RAG Chatbot · AWS Bedrock Agent</p>
+            <p class="cap-foot"><span class="ref">//</span> Multi-Bot RAG · Bedrock AgentCore · pgvector knowledge service</p>
           </article>
 
           <article class="cap-card reveal" data-delay="1">
@@ -234,15 +238,15 @@
               <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 7V4M8 4h8M9 13h.01M15 13h.01M9 16h6"/></svg></span>
               <h3 class="cap-title">AI Agents</h3>
             </div>
-            <p class="cap-desc">Autonomous, tool-using agents that plan tasks, call APIs and synthesise results through stateful graphs.</p>
+            <p class="cap-desc">Stateful, tool-using agents orchestrated with LangGraph — including MCP servers — that plan, call tools and validate with human-in-the-loop review.</p>
             <div class="flow">
-              <span class="flow-step">Planning</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Tools</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Memory</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Execution</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Validation</span>
+              <span class="flow-step">Plan</span><span class="flow-arrow">→</span>
+              <span class="flow-step">MCP tools</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Execute</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Validate</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Review</span>
             </div>
-            <p class="cap-foot"><span class="ref">//</span> Research Agent · CodeGuard · Email Summary Agent</p>
+            <p class="cap-foot"><span class="ref">//</span> CodeGuard PR Agent · MCP onboarding server · Research Agent</p>
           </article>
 
           <article class="cap-card reveal" data-delay="2">
@@ -290,80 +294,83 @@
           <div class="skill-group reveal">
             <div class="skill-group-head">
               <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.4-1.5 3.2-.6.7-1 1.2-1 2v1h-3v-1c0-.8-.4-1.3-1-2C8.8 8.4 8 7.5 8 6a4 4 0 0 1 4-4z"/><path d="M9 16h6M10 19h4"/></svg></span>
-              <div><h3>AI / LLM</h3><p>generative &amp; agentic</p></div>
+              <div><h3>AI &amp; GenAI</h3><p>llms, rag &amp; agents</p></div>
             </div>
             <div class="skill-badges">
               <span class="skill-badge"><span class="sb-dot"></span>LLMs</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Generative AI</span>
+              <span class="skill-badge"><span class="sb-dot"></span>LLM Agents</span>
               <span class="skill-badge"><span class="sb-dot"></span>RAG</span>
-              <span class="skill-badge"><span class="sb-dot"></span>AI Agents</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Multi-Agent Systems</span>
               <span class="skill-badge"><span class="sb-dot"></span>Prompt Engineering</span>
-              <span class="skill-badge"><span class="sb-dot"></span>LangChain</span>
-              <span class="skill-badge"><span class="sb-dot"></span>LangGraph</span>
-              <span class="skill-badge"><span class="sb-dot"></span>LangSmith</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Chatbots</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Fine-tuning</span>
-              <span class="skill-badge"><span class="sb-dot"></span>AWS Bedrock</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Embeddings</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Vector Search</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Tool Calling</span>
+              <span class="skill-badge"><span class="sb-dot"></span>MCP</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Model Evaluation</span>
+              <span class="skill-badge"><span class="sb-dot"></span>NLP</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Transformers</span>
               <span class="skill-badge"><span class="sb-dot"></span>Hugging Face</span>
-              <span class="skill-badge"><span class="sb-dot"></span>n8n</span>
             </div>
           </div>
 
           <div class="skill-group reveal" data-delay="1">
             <div class="skill-group-head">
               <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/><path d="M9 21h6"/></svg></span>
-              <div><h3>Machine Learning &amp; Data</h3><p>models &amp; analytics</p></div>
+              <div><h3>Machine Learning &amp; Data</h3><p>models, tuning &amp; eval</p></div>
             </div>
             <div class="skill-badges">
               <span class="skill-badge"><span class="sb-dot"></span>Machine Learning</span>
               <span class="skill-badge"><span class="sb-dot"></span>Deep Learning</span>
-              <span class="skill-badge"><span class="sb-dot"></span>NLP</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Transformers</span>
-              <span class="skill-badge"><span class="sb-dot"></span>PyTorch</span>
-              <span class="skill-badge"><span class="sb-dot"></span>TensorFlow</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Scikit-Learn</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Feature Engineering</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Regression</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Classification</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Scikit-learn</span>
+              <span class="skill-badge"><span class="sb-dot"></span>CatBoost</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Optuna</span>
               <span class="skill-badge"><span class="sb-dot"></span>Pandas</span>
               <span class="skill-badge"><span class="sb-dot"></span>NumPy</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Matplotlib</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Seaborn</span>
               <span class="skill-badge"><span class="sb-dot"></span>Data Visualization</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Power BI</span>
+              <span class="skill-badge"><span class="sb-dot"></span>SQL</span>
             </div>
           </div>
 
           <div class="skill-group reveal" data-delay="2">
             <div class="skill-group-head">
               <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></span>
-              <div><h3>Programming</h3><p>languages &amp; notebooks</p></div>
+              <div><h3>Agent Orchestration &amp; Apps</h3><p>frameworks &amp; serving</p></div>
             </div>
             <div class="skill-badges">
+              <span class="skill-badge"><span class="sb-dot"></span>LangGraph</span>
+              <span class="skill-badge"><span class="sb-dot"></span>LangChain</span>
+              <span class="skill-badge"><span class="sb-dot"></span>MCP Tool Calling</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Agent Orchestration</span>
               <span class="skill-badge"><span class="sb-dot"></span>Python</span>
-              <span class="skill-badge"><span class="sb-dot"></span>C++</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Core Java</span>
-              <span class="skill-badge"><span class="sb-dot"></span>JavaScript</span>
-              <span class="skill-badge"><span class="sb-dot"></span>HTML &amp; CSS</span>
-              <span class="skill-badge"><span class="sb-dot"></span>SQL / MySQL</span>
-              <span class="skill-badge"><span class="sb-dot"></span>MongoDB</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Statistics</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Web Scraping</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Excel</span>
+              <span class="skill-badge"><span class="sb-dot"></span>FastAPI</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Flask</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Streamlit</span>
+              <span class="skill-badge"><span class="sb-dot"></span>n8n</span>
             </div>
           </div>
 
           <div class="skill-group reveal" data-delay="3">
             <div class="skill-group-head">
               <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-9 6 6 0 0 0-11.6-1.5A4 4 0 0 0 7 17h10.5z"/><path d="M12 12v6M9 15l3 3 3-3"/></svg></span>
-              <div><h3>Backend &amp; Infrastructure</h3><p>serving &amp; shipping</p></div>
+              <div><h3>Cloud &amp; Data Infrastructure</h3><p>deploy &amp; vector stores</p></div>
             </div>
             <div class="skill-badges">
-              <span class="skill-badge"><span class="sb-dot"></span>FastAPI</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Flask</span>
-              <span class="skill-badge"><span class="sb-dot"></span>Streamlit</span>
+              <span class="skill-badge"><span class="sb-dot"></span>AWS Bedrock</span>
+              <span class="skill-badge"><span class="sb-dot"></span>AWS Lambda</span>
+              <span class="skill-badge"><span class="sb-dot"></span>AWS EC2</span>
+              <span class="skill-badge"><span class="sb-dot"></span>SageMaker</span>
+              <span class="skill-badge"><span class="sb-dot"></span>AgentCore</span>
               <span class="skill-badge"><span class="sb-dot"></span>Docker</span>
-              <span class="skill-badge"><span class="sb-dot"></span>GitHub Actions</span>
-              <span class="skill-badge"><span class="sb-dot"></span>MLflow</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Git</span>
+              <span class="skill-badge"><span class="sb-dot"></span>GitHub Actions CI/CD</span>
+              <span class="skill-badge"><span class="sb-dot"></span>PostgreSQL / pgvector</span>
               <span class="skill-badge"><span class="sb-dot"></span>Pinecone</span>
-              <span class="skill-badge"><span class="sb-dot"></span>ChromaDB</span>
-              <span class="skill-badge"><span class="sb-dot"></span>AstraDB</span>
-              <span class="skill-badge"><span class="sb-dot"></span>REST APIs</span>
+              <span class="skill-badge"><span class="sb-dot"></span>FAISS</span>
             </div>
           </div>
         </div>
@@ -376,7 +383,7 @@
         <div class="section-head reveal">
           <span class="eyebrow">Experience</span>
           <h2 class="section-title">Where I've worked</h2>
-          <p class="section-sub">Hands-on data and analytics internships that built my engineering foundation.</p>
+          <p class="section-sub">Currently building production AI in the insurance domain; earlier roles built my data and ML foundation.</p>
         </div>
         <div class="timeline">
           <div class="tl-item reveal">
@@ -384,48 +391,28 @@
             <div class="tl-card">
               <div class="tl-top">
                 <div>
-                  <h3 class="tl-role">Data Analyst Intern</h3>
-                  <div class="tl-company">iNeuron</div>
+                  <h3 class="tl-role">Senior Executive — AI/ML &amp; Generative AI</h3>
+                  <div class="tl-company">Nvest Solution Private Limited · Thane, MH</div>
                 </div>
-                <span class="tl-date">Jan 2022 – Apr 2022</span>
+                <span class="tl-date">Jul 2024 – Present</span>
               </div>
               <ul class="tl-list">
-                <li>Gathered data on Google Play Store apps and cleaned &amp; analysed it to surface actionable insights.</li>
-                <li>Built an interactive dashboard as a web app using Python and Heroku.</li>
+                <li>Deployed an <strong>LLM-based agent</strong> (LangGraph, Flask) for automated GitHub PR review with severity scoring and inline fix suggestions — <strong>cutting manual review effort by ~85%</strong> and PR turnaround by ~70%.</li>
+                <li>Built a <strong>production RAG knowledge service</strong> (Docling parsing, Voyage AI embeddings, PostgreSQL/pgvector with hybrid BM25 + vector search) with multi-tenant data scoping across insurance clients.</li>
+                <li>Developed a <strong>local MCP server</strong> for insurance product onboarding with tool-calling/agent orchestration (Claude, Codex, Antigravity) — automating discovery, validation, diagnostics and SQL generation, <strong>cutting setup time ~95%</strong> (3–4 days → 2–3 hrs) with read-only DB access and human-in-the-loop review.</li>
+                <li>Built <strong>ML evaluation &amp; monitoring</strong> (renewal-propensity, churn, lead-scoring) with scikit-learn/CatBoost, Optuna tuning and champion/challenger promotion gated on AUC/F1 — expanding recommendation coverage from <strong>1 to 12 insurance lines of business</strong>.</li>
               </ul>
             </div>
           </div>
 
           <div class="tl-item reveal" data-delay="1">
             <span class="tl-dot" aria-hidden="true"></span>
-            <div class="tl-card">
-              <div class="tl-top">
-                <div>
-                  <h3 class="tl-role">Data Science Intern</h3>
-                  <div class="tl-company">LetsGrowMore</div>
-                </div>
-                <span class="tl-date">Sep 2021 – Oct 2021</span>
-              </div>
-              <ul class="tl-list">
-                <li>Performed stock-price forecasting using an LSTM neural network.</li>
-                <li>Converted images to sketches using OpenCV and clustered the Iris dataset across multiple features.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tl-item reveal" data-delay="2">
-            <span class="tl-dot" aria-hidden="true"></span>
-            <div class="tl-card">
-              <div class="tl-top">
-                <div>
-                  <h3 class="tl-role">Machine Learning Intern</h3>
-                  <div class="tl-company">The Sparks Foundation</div>
-                </div>
-                <span class="tl-date">Mar 2021 – Apr 2021</span>
-              </div>
-              <ul class="tl-list">
-                <li>Performed exploratory data analysis on the IPL dataset.</li>
-                <li>Analysed terrorism data to extract useful insights and cleaned &amp; visualised sales data.</li>
+            <div class="tl-card tl-early">
+              <h3 class="tl-early-title">Earlier experience · Data &amp; ML internships (2021–2022)</h3>
+              <ul class="tl-early-list">
+                <li><strong>Data Analyst Intern</strong> — iNeuron <span class="tl-early-date">Jan–Apr 2022</span><br>Google Play Store data analysis; built a Python/Heroku dashboard web app.</li>
+                <li><strong>Data Science Intern</strong> — LetsGrowMore <span class="tl-early-date">Sep–Oct 2021</span><br>Stock-price forecasting with LSTM; OpenCV image processing; Iris clustering.</li>
+                <li><strong>Machine Learning Intern</strong> — The Sparks Foundation <span class="tl-early-date">Mar–Apr 2021</span><br>EDA on IPL and terrorism datasets; cleaned &amp; visualised sales data.</li>
               </ul>
             </div>
           </div>
@@ -473,10 +460,10 @@
         <div class="edu-grid">
           <article class="edu-card reveal">
             <span class="edu-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></span>
-            <div class="edu-level">Undergraduate</div>
+            <div class="edu-level">Undergraduate · Graduated</div>
             <h3 class="edu-degree">B.E. Computer Science &amp; Engineering</h3>
-            <p class="edu-school">Prof. Ram Meghe Institute of Technology &amp; Research, Amravati</p>
-            <div class="edu-meta"><span class="edu-date">2019 – Present</span><span class="edu-grade">CGPA 9.8</span></div>
+            <p class="edu-school">Prof. Ram Meghe Institute of Technology &amp; Research, SGBAU · Amravati</p>
+            <div class="edu-meta"><span class="edu-date">2019 – 2023</span><span class="edu-grade">CGPA 9.14 / 10</span></div>
           </article>
 
           <article class="edu-card reveal" data-delay="1">
@@ -504,8 +491,10 @@
         <div class="section-head reveal">
           <span class="eyebrow">Certifications</span>
           <h2 class="section-title">Credentials &amp; training</h2>
-          <p class="section-sub">Verified certificates from IBM, AWS, Coding Ninjas, Internshala, LinkedIn Learning and more. Click any to view.</p>
+          <p class="section-sub">Key certifications from Udemy, IBM, Internshala, LinkedIn Learning and Kaggle — plus verifiable certificate scans below.</p>
         </div>
+        <div class="featured-cert-grid" id="featuredCertGrid"><!-- rendered by js/main.js --></div>
+        <h3 class="cert-subhead reveal">Certificate scans</h3>
         <div class="cert-grid" id="certGrid"><!-- rendered by js/main.js --></div>
       </div>
     </section>

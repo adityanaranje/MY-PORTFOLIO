@@ -374,9 +374,20 @@ ul { list-style: none; }
   font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted);
   background: var(--bg-subtle); border: 1px solid var(--border); padding: 5px 12px; border-radius: var(--r-pill); white-space: nowrap;
 }
-.tl-list { margin-top: 14px; display: grid; gap: 9px; }
-.tl-list li { position: relative; padding-left: 22px; color: var(--text-muted); font-size: 14.5px; }
+.tl-list { margin-top: 14px; display: grid; gap: 11px; }
+.tl-list li { position: relative; padding-left: 22px; color: var(--text-muted); font-size: 14.5px; line-height: 1.55; }
+.tl-list li strong { color: var(--text); font-weight: 600; }
 .tl-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+
+/* Earlier-experience compact card */
+.tl-early { background: var(--bg-subtle); }
+.tl-early-title { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; font-family: var(--font-mono); }
+.tl-early-list { display: grid; gap: 12px; }
+.tl-early-list li { font-size: 14px; color: var(--text-muted); line-height: 1.5; padding-left: 18px; position: relative; }
+.tl-early-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.tl-early-list strong { color: var(--text); font-weight: 600; }
+.tl-early-list br { display: none; }
+.tl-early-date { color: var(--text-faint); font-family: var(--font-mono); font-size: 12.5px; margin-left: 6px; }
 
 /* ---------- Projects ---------- */
 .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 40px; }
@@ -464,6 +475,25 @@ ul { list-style: none; }
 .cert-card:hover .cert-zoom { opacity: 1; }
 .cert-zoom svg { width: 15px; height: 15px; }
 
+/* Featured credentials (textual, résumé-aligned) */
+.featured-cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 44px; }
+.featured-cert-card {
+  text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+  transition: transform 0.25s var(--ease), border-color 0.25s, box-shadow 0.25s; height: 100%;
+}
+.featured-cert-card:hover { transform: translateY(-4px); border-color: var(--accent-border); box-shadow: var(--shadow-md); }
+.fc-badge { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: var(--accent-dim); border: 1px solid var(--accent-border); color: var(--accent); margin-bottom: 6px; }
+.fc-badge svg { width: 21px; height: 21px; }
+.fc-name { font-size: 16px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+.fc-issuer { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); }
+.fc-view { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent); padding-top: 6px; }
+.fc-view svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.featured-cert-card:hover .fc-view svg { transform: translateX(3px); }
+.fc-verified { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--text-faint); font-family: var(--font-mono); padding-top: 6px; }
+.fc-verified svg { width: 14px; height: 14px; color: var(--accent); }
+.cert-subhead { font-family: var(--font-mono); font-size: 13px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
+
 /* Lightbox */
 .lightbox { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; padding: 30px; background: rgba(4,6,10,0.88); backdrop-filter: blur(8px); }
 .lightbox.open { display: flex; }
@@ -536,6 +566,7 @@ ul { list-style: none; }
   .project-card.featured { grid-column: span 2; }
   .edu-grid { grid-template-columns: 1fr; }
   .cert-grid { grid-template-columns: repeat(3, 1fr); }
+  .featured-cert-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 720px) {
   .section { padding: 72px 0; }
@@ -545,6 +576,7 @@ ul { list-style: none; }
   .project-card.featured { grid-column: span 1; }
   .project-card.featured .p-thumb { aspect-ratio: 16/9; }
   .cert-grid { grid-template-columns: repeat(2, 1fr); }
+  .featured-cert-grid { grid-template-columns: 1fr; }
   .about-points { grid-template-columns: 1fr; }
   .hero { padding-top: calc(var(--nav-h) + 40px); }
   .footer-inner { flex-direction: column; text-align: center; }
