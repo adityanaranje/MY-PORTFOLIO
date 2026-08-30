@@ -518,7 +518,13 @@ ul { list-style: none; }
 .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
 .blog-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; transition: transform 0.25s var(--ease), border-color 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
 .blog-card:hover { transform: translateY(-5px); border-color: var(--accent-border); box-shadow: var(--shadow-md); }
-.blog-thumb { aspect-ratio: 16/8; overflow: hidden; background: var(--bg-subtle); }
+.blog-thumb { position: relative; aspect-ratio: 16/8; overflow: hidden; background: var(--bg-subtle); }
+.blog-new {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 11px; border-radius: var(--r-pill); background: var(--accent); color: var(--accent-ink);
+  box-shadow: 0 4px 14px rgba(74,222,128,0.35);
+}
 .blog-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
 .blog-card:hover .blog-thumb img { transform: scale(1.04); }
 .blog-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }

@@ -104,6 +104,14 @@
   // Writing — AI/LLM articles with public links
   const blogs = [
     {
+      title: "Designing Production-Grade Agentic AI Systems — Explained Through a Restaurant",
+      date: "Aug 30, 2026", read: "13 min", tags: ["Agentic AI", "AI Architecture", "Production AI"],
+      excerpt: "How the moving parts of a production agentic AI system — orchestration, tool calling, memory, and validation — map onto the roles in a busy restaurant kitchen, making AI system design intuitive.",
+      img: "static/images/Blogs/agentic-restaurant.jpg",
+      link: "https://adityanaranje.medium.com/",
+      newest: true,
+    },
+    {
       title: "A Smart RAG Architecture with LangGraph",
       date: "Apr 6, 2026", read: "8 min", tags: ["RAG", "LangGraph", "LLM"],
       excerpt: "A modern Retrieval-Augmented Generation architecture using LangGraph to build context-aware AI systems with better control, memory and real-world applicability.",
@@ -269,7 +277,10 @@
     .map(
       (b, i) => `
     <article class="blog-card reveal" data-delay="${(i % 2) + 1}">
-      <div class="blog-thumb"><img src="${b.img}" alt="${b.title} article cover" loading="lazy"></div>
+      <div class="blog-thumb">
+        <img src="${b.img}" alt="${b.title} article cover" loading="lazy">
+        ${b.newest ? '<span class="blog-new">New</span>' : ""}
+      </div>
       <div class="blog-body">
         <div class="blog-meta"><span>${b.date}</span><span class="dot"></span><span>${b.read} read</span></div>
         <h3 class="blog-title">${b.title}</h3>
