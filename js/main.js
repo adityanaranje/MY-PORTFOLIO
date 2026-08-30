@@ -441,8 +441,61 @@
   setIcon(".ci-kaggle", ICON.kaggle);
 
   /* ------------------------------------------------------------
+     Experience timeline — smooth snake/S-curve
+  ------------------------------------------------------------ */
+  function drawTimelineCurve() {
+    const tl = document.getElementById("timeline");
+    const svg = document.getElementById("timelineCurve");
+    const path = document.getElementById("timelinePath");
+    if (!tl || !svg || !path) return;
+    const dots = Array.from(tl.querySelectorAll(".tl-dot"));
+    if (dots.length < 2) return;
+
+    const tlRect = tl.getBoundingClientRect();
+    // Centre of each milestone dot, relative to the timeline
+    const dotPts = dots.map((d) => {
+      const r = d.getBoundingClientRect();
+      return { x: r.left - tlRect.left + r.width / 2, y: r.top - tlRect.top + r.height / 2 };
+    });
+
+    // Nodes: each dot, plus a swayed midpoint between consecutive dots (alternating side)
+    const nodes = [dotPts[0]];
+    for (let i = 1; i < dotPts.length; i++) {
+      const a = dotPts[i - 1];
+      const b = dotPts[i];
+      const midY = (a.y + b.y) / 2;
+      const bulge = i % 2 === 1 ? 17 : -13; // right then left → snake
+      nodes.push({ x: a.x + bulge, y: midY });
+      nodes.push(b);
+    }
+
+    // Catmull-Rom → cubic Bézier (smooth, passes through every node/dot)
+    let d = `M ${nodes[0].x} ${nodes[0].y}`;
+    for (let k = 0; k < nodes.length - 1; k++) {
+      const p0 = nodes[k - 1] || nodes[k];
+      const p1 = nodes[k];
+      const p2 = nodes[k + 1];
+      const p3 = nodes[k + 2] || p2;
+      const c1x = p1.x + (p2.x - p0.x) / 6;
+      const c1y = p1.y + (p2.y - p0.y) / 6;
+      const c2x = p2.x - (p3.x - p1.x) / 6;
+      const c2y = p2.y - (p3.y - p1.y) / 6;
+      d += ` C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2.x} ${p2.y}`;
+    }
+    path.setAttribute("d", d);
+
+    const H = Math.ceil(tl.clientHeight);
+    svg.setAttribute("viewBox", `0 0 40 ${H}`);
+    svg.setAttribute("height", H);
+  }
+  window.addEventListener("load", drawTimelineCurve);
+  window.addEventListener("resize", drawTimelineCurve);
+  setTimeout(drawTimelineCurve, 500); // after fonts/reveal settle
+
+  /* ------------------------------------------------------------
      Init
   ------------------------------------------------------------ */
   renderProjects("all");
   observeReveals();
+  setTimeout(drawTimelineCurve, 800);
 })();
