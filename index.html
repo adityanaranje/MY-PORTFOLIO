@@ -1,1440 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Naranje - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papWf09...==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #121212;
-            color: #fff;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-        }
-        
-        nav.scrolled {
-            padding: 15px 0;
-            background: rgba(26, 26, 26, 0.98);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .theme-toggle {
-            width: 40px;
-            height: 40px;
-            background: #2a2a2a;
-            border: 1px solid #404040;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            position: absolute;
-            left: 20px;
-        }
-
-        .theme-toggle:hover {
-            background: #3a3a3a;
-            transform: scale(1.05);
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 2px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 50px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #ccc;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 16px;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #fff;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            text-align: left;
-            padding: 60px 70px;
-            background: #1a1a1a;
-            position: relative;
-            overflow: hidden;
-            transition: background 0.3s ease;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('static/images/Background/bg_dark.jpg');
-            background-size: auto 100%;
-            background-position: right center;
-            background-repeat: no-repeat;
-            opacity: 0.8;
-            z-index: 0;
-            transition: background-image 0.3s ease, opacity 0.3s ease;
-        }
-
-        .hero > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h2 {
-            font-size: 18px;
-            font-weight: 400;
-            margin-bottom: 10px;
-            opacity: 0.7;
-            color: #888;
-            transition: color 0.3s ease;
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            background: linear-gradient(135deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: background 0.3s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 20px;
-            opacity: 0.7;
-            margin-bottom: 40px;
-            color: #aaa;
-            transition: color 0.3s ease;
-        }
-        .fade {
-          opacity: 0;
-          transition: opacity 0.5s ease-in-out;
-        }
-
-        /* Portfolio Section */
-        .portfolio-section {
-            padding: 80px 0;
-            background: #121212;
-            transition: background 0.3s ease;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 42px;
-            margin-bottom: 50px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
-
-        .category-tab {
-            background: transparent;
-            border: 2px solid #333;
-            color: #aaa;
-            padding: 12px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .category-tab:hover,
-        .category-tab.active {
-            background: #fff;
-            color: #0a0a0a;
-            border-color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
-        }
-
-        .projects-container {
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 20px 0;
-            margin: 0 -20px;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .projects-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .projects-wrapper {
-            display: flex;
-            gap: 30px;
-            padding: 0 20px;
-            min-width: min-content;
-        }
-
-        .project-card {
-            flex: 0 0 350px;
-            background: #1e1e1e;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #404040;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            border-color: #444;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #2a2a2a 0%, #404040 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            color: rgba(255,255,255,0.1);
-            transition: background 0.3s ease, color 0.3s ease;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-info {
-            padding: 25px;
-        }
-
-        .project-title {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .project-category {
-            color: #888;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .project-description {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.7;
-            color: #aaa;
-            transition: color 0.3s ease;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 80px 0;
-            background: #1a1a1a;
-            transition: background 0.3s ease;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            transition: color 0.3s ease;
-        }
-
-        .about-text p {
-            line-height: 1.8;
-            opacity: 0.8;
-            margin-bottom: 30px;
-            color: #aaa;
-            transition: color 0.3s ease;
-        }
-
-.skills {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.skill-tag {
-    background: #2a2a2a;
-    border: 1px solid #404040;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 14px;
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.skill-tag:hover {
-    background: #fff;
-    color: #0a0a0a;
-    border-color: #fff;
-}
-
-/* Skills Section */
-.skills-section {
-    padding: 80px 0;
-    background: #0f0f0f;
-    transition: background 0.3s ease;
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 15px;
-    margin-top: 50px;
-}
-
-.skill-item {
-    background: #1e1e1e;
-    padding: 12px;
-    border-radius: 12px;
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid #404040;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    aspect-ratio: 1;
-}
-
-.skill-item:hover {
-    transform: translateY(-5px);
-    border-color: #666;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.skill-icon {
-    font-size: 36px;
-    flex-shrink: 0;
-}
-
-.skill-name {
-    font-size: 12px;
-    font-weight: 500;
-    color: #ccc;
-    line-height: 1.2;
-    word-break: break-word;
-}
-
-/* Category colors */
-.skill-item.ai .skill-icon { color: #FF6F61; }      /* Generative AI - Red */
-.skill-item.ml .skill-icon { color: #6A5ACD; }      /* Machine Learning - Purple */
-.skill-item.da .skill-icon { color: #20B2AA; }      /* Data Analysis - Teal */
-
-.about-image {
-    background-image: url('static/images/Background/about-image.jpg');
-    background-size: cover;       /* makes image cover entire box */
-    background-position: center;  /* centers the image */
-    background-repeat: no-repeat; /* prevents tiling */
-    width: 100%;                  /* full width of container */
-    height: 400px;                /* adjust height as needed */
-    border-radius: 15px;
-    border: 1px solid #505050;
-    overflow: hidden;             /* hides any overflow */
-}
-
-
-        
-        /* Services Section */
-        .services-section {
-            padding: 80px 0;
-            background: #121212;
-            transition: background 0.3s ease;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background: #1e1e1e;
-            padding: 40px 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #404040;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: #444;
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: #2a2a2a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 36px;
-            transition: all 0.3s ease;
-            border: 1px solid #404040;
-        }
-
-        .service-card:hover .service-icon {
-            background: #fff;
-        }
-
-        .service-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .service-description {
-            opacity: 0.7;
-            line-height: 1.6;
-            font-size: 14px;
-            color: #aaa;
-            transition: color 0.3s ease;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 80px 0;
-            background: #1a1a1a;
-            text-align: center;
-            transition: background 0.3s ease;
-        }
-
-        .contact-info {
-            margin-top: 40px;
-        }
-
-        .contact-item {
-            font-size: 18px;
-            margin: 15px 0;
-            opacity: 0.8;
-            color: #aaa;
-            transition: color 0.3s ease;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: #2a2a2a;
-            border: 1px solid #404040;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 24px;
-        }
-
-        .social-link:hover {
-            transform: scale(1.1);
-            background: #fff;
-            color: #0a0a0a;
-            border-color: #fff;
-        }
-
-        /* Footer */
-        footer {
-            background: #000;
-            padding: 30px 0;
-            text-align: center;
-            opacity: 0.6;
-            border-top: 1px solid #1a1a1a;
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
-
-        /* Light Mode Styles */
-        body.light-mode {
-            background: #f5f5f5;
-            color: #1a1a1a;
-        }
-
-        body.light-mode nav {
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        body.light-mode .theme-toggle {
-            background: #e0e0e0;
-            border-color: #d0d0d0;
-        }
-
-        body.light-mode .theme-toggle:hover {
-            background: #d0d0d0;
-        }
-
-        body.light-mode .menu-toggle span {
-            background: #1a1a1a;
-        }
-
-        body.light-mode .nav-links a {
-            color: #666;
-        }
-
-        body.light-mode .nav-links a:hover {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .nav-links a::after {
-            background: #1a1a1a;
-        }
-
-        body.light-mode .hero {
-            background: #ffffff;
-        }
-
-        body.light-mode .hero::before {
-            background-image: url('static/images/Background/bg_light.jpg');
-            opacity: 1;
-        }
-
-        body.light-mode .hero h2 {
-            color: #666;
-        }
-
-        body.light-mode .hero h1 {
-            background: linear-gradient(135deg, #1a1a1a 0%, #666 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        body.light-mode .hero-subtitle {
-            color: #666;
-        }
-
-        body.light-mode .portfolio-section {
-            background: #f5f5f5;
-        }
-
-        body.light-mode .category-tab {
-            border-color: #d0d0d0;
-            color: #666;
-        }
-
-        body.light-mode .category-tab:hover,
-        body.light-mode .category-tab.active {
-            background: #1a1a1a;
-            color: #fff;
-            border-color: #1a1a1a;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        body.light-mode .project-card {
-            background: #ffffff;
-            border-color: #e0e0e0;
-        }
-
-        body.light-mode .project-card:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-color: #d0d0d0;
-        }
-
-        body.light-mode .project-image {
-            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
-            color: rgba(0,0,0,0.1);
-        }
-
-        body.light-mode .project-title {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .project-category {
-            color: #666;
-        }
-
-        body.light-mode .project-description {
-            color: #666;
-        }
-
-        body.light-mode .about-section {
-            background: #ffffff;
-        }
-
-        body.light-mode .about-text h2 {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .about-text p {
-            color: #666;
-        }
-
-        body.light-mode .skill-tag {
-            background: #e0e0e0;
-            border-color: #d0d0d0;
-            color: #1a1a1a;
-        }
-
-        body.light-mode .skill-tag:hover {
-            background: #1a1a1a;
-            color: #fff;
-            border-color: #1a1a1a;
-        }
-
-        body.light-mode .skills-section {
-            background: #f0f0f0;
-        }
-
-        body.light-mode .skill-item {
-            background: #ffffff;
-            border-color: #e0e0e0;
-        }
-
-        body.light-mode .skill-item:hover {
-            border-color: #d0d0d0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        body.light-mode .skill-name {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .services-section {
-            background: #f5f5f5;
-        }
-
-        body.light-mode .service-card {
-            background: #ffffff;
-            border-color: #e0e0e0;
-        }
-
-        body.light-mode .service-card:hover {
-            border-color: #d0d0d0;
-        }
-
-        body.light-mode .service-icon {
-            background: #e0e0e0;
-            border-color: #d0d0d0;
-        }
-
-        body.light-mode .service-card:hover .service-icon {
-            background: #1a1a1a;
-        }
-
-        body.light-mode .service-title {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .service-description {
-            color: #666;
-        }
-
-        body.light-mode .contact-section {
-            background: #ffffff;
-        }
-
-        body.light-mode .section-title {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .contact-item {
-            color: #666;
-        }
-
-        body.light-mode .social-link {
-            background: #e0e0e0;
-            border-color: #d0d0d0;
-            color: #1a1a1a;
-        }
-
-        body.light-mode .social-link:hover {
-            background: #1a1a1a;
-            color: #fff;
-            border-color: #1a1a1a;
-        }
-
-        body.light-mode footer {
-            background: #ffffff;
-            border-top-color: #e0e0e0;
-            color: #1a1a1a;
-        }
-
-        body.light-mode #blogs {
-            background: #ffffff !important;
-        }
-
-        .blog-card {
-            flex: 0 0 350px;
-            background: #1e1e1e;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #404040;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            border-color: #444;
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #2a2a2a 0%, #404040 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: rgba(255,255,255,0.1);
-            transition: background 0.3s ease, color 0.3s ease;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .blog-info {
-            padding: 25px;
-        }
-
-        .blog-date {
-            color: #888;
-            font-size: 12px;
-            font-weight: 500;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .blog-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .blog-excerpt {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.7;
-            color: #aaa;
-            transition: color 0.3s ease;
-            margin-bottom: 15px;
-        }
-
-        .blog-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .blog-tag {
-            background: #2a2a2a;
-            border: 1px solid #404040;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 11px;
-            color: #ccc;
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode .blog-card {
-            background: #ffffff;
-            border-color: #e0e0e0;
-        }
-
-        body.light-mode .blog-card:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-color: #d0d0d0;
-        }
-
-        body.light-mode .blog-image {
-            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
-            color: rgba(0,0,0,0.1);
-        }
-
-        body.light-mode .blog-title {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .blog-date {
-            color: #666;
-        }
-
-        body.light-mode .blog-excerpt {
-            color: #666;
-        }
-
-        body.light-mode .blog-tag {
-            background: #e0e0e0;
-            border-color: #d0d0d0;
-            color: #1a1a1a;
-        }
-        
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 60px 20px;
-                align-items: center;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card {
-                flex: 0 0 300px;
-            }
-
-            .category-tabs {
-                gap: 15px;
-            }
-
-            .category-tab {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 83px;
-                left: -100%;
-                width: 100%;
-                background: rgba(26, 26, 26, 0.98);
-                flex-direction: column;
-                gap: 0;
-                padding: 20px 0;
-                transition: left 0.3s ease;
-                border-bottom: 1px solid #404040;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                padding: 15px 20px;
-                border-bottom: 1px solid #2a2a2a;
-            }
-
-            .menu-toggle {
-                display: flex;
-                position: absolute;
-                right: 20px;
-            }
-
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-            }
-
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-
-            body.light-mode .nav-links {
-                background: rgba(255, 255, 255, 0.98);
-                border-bottom-color: #e0e0e0;
-            }
-
-            body.light-mode .nav-links li {
-                border-bottom-color: #e0e0e0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO -->
+  <title>Aditya Naranje — AI/ML Engineer | LLMs, RAG &amp; AI Agents</title>
+  <meta name="description" content="Aditya Naranje is an AI/ML Engineer building intelligent systems with LLMs, Retrieval-Augmented Generation (RAG), AI Agents, LangChain, LangGraph and Python. Explore agentic workflows, RAG chatbots and machine-learning projects.">
+  <meta name="author" content="Aditya Naranje">
+  <meta name="keywords" content="Aditya Naranje, AI Engineer, ML Engineer, Generative AI, Agentic AI, RAG, LLM, LangChain, LangGraph, AI Agents, Python, Machine Learning, Portfolio">
+  <link rel="canonical" href="https://adityanaranje.github.io/MY-PORTFOLIO/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aditya Naranje — AI/ML Engineer">
+  <meta property="og:description" content="Building intelligent systems with LLMs, RAG and AI Agents. Explore agentic workflows, retrieval-augmented chatbots and ML projects.">
+  <meta property="og:url" content="https://adityanaranje.github.io/MY-PORTFOLIO/">
+  <meta property="og:image" content="https://adityanaranje.github.io/MY-PORTFOLIO/static/images/Projects/agent-builder.png">
+  <meta property="og:site_name" content="Aditya Naranje Portfolio">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aditya Naranje — AI/ML Engineer">
+  <meta name="twitter:description" content="Building intelligent systems with LLMs, RAG and AI Agents.">
+  <meta name="twitter:image" content="https://adityanaranje.github.io/MY-PORTFOLIO/static/images/Projects/agent-builder.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="static/images/venom.ico">
+
+  <!-- Fonts (1 family + 1 mono = 2 total) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aditya Naranje",
+    "jobTitle": "AI/ML Engineer",
+    "url": "https://adityanaranje.github.io/MY-PORTFOLIO/",
+    "email": "aditya.naranje7@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Amravati", "addressRegion": "Maharashtra", "addressCountry": "IN" },
+    "sameAs": [
+      "https://github.com/adityanaranje",
+      "https://www.linkedin.com/in/anaranje",
+      "https://x.com/aditya_naranje",
+      "https://adityanaranje.medium.com/",
+      "https://www.kaggle.com/adityanaranje"
+    ],
+    "knowsAbout": ["LLMs","RAG","AI Agents","LangChain","LangGraph","Python","Machine Learning","Deep Learning","NLP","Generative AI"]
+  }
+  </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" onclick="closeMenu()">Home</a></li>
-                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
-                <li><a href="#about" onclick="closeMenu()">About</a></li>
-                <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
-                <li><a href="#services" onclick="closeMenu()">Services</a></li>
-                <li><a href="#blogs" onclick="closeMenu()">Blogs</a></li>
-                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-            </ul>
-            <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
+  <!-- ================= Navigation ================= -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Aditya Naranje — home">
+        <span class="brand-mark">AN</span>
+        <span>Aditya Naranje<small>AI/ML Engineer</small></span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle color theme"></button>
+        <a href="static/docs/Resume.pdf" class="btn btn-primary btn-sm nav-resume" target="_blank" rel="noopener">Resume</a>
+        <button class="icon-btn burger" id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <span class="burger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-scrim" id="navScrim"></div>
+
+  <main>
+    <!-- ================= Hero ================= -->
     <section class="hero" id="home">
-        <h2>Hello I'm</h2>
-        <h1>Aditya Naranje</h1>
-        <p class="hero-subtitle">
-          <span id="animated-text">Gen AI Engineer</span>
-        </p>
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="hero-badge"><span class="status-dot" aria-hidden="true"></span> Open to AI/ML opportunities</span>
+          <h1>Aditya Naranje<br><span class="accent">builds intelligent systems.</span></h1>
+          <p class="hero-role"><span id="heroRole"></span><span class="caret" aria-hidden="true"></span></p>
+          <p class="hero-desc">
+            I'm an <strong>AI/ML Engineer</strong> designing and shipping <strong>LLM applications,
+            retrieval-augmented generation (RAG)</strong> and <strong>autonomous AI agents</strong> —
+            from multi-agent research workflows to production RAG chatbots with LangChain, LangGraph and Python.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View Projects
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="static/docs/Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
+              Download Resume
+            </a>
+          </div>
+          <div class="hero-social">
+            <a href="https://github.com/adityanaranje" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"></a>
+            <a href="https://www.linkedin.com/in/anaranje" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"></a>
+            <a href="https://x.com/aditya_naranje" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X (Twitter)"></a>
+            <a href="https://adityanaranje.medium.com/" target="_blank" rel="noopener" aria-label="Medium" title="Medium"></a>
+            <a href="https://www.kaggle.com/adityanaranje" target="_blank" rel="noopener" aria-label="Kaggle" title="Kaggle"></a>
+          </div>
+        </div>
+
+        <!-- Terminal / RAG pipeline visual -->
+        <div class="hero-visual reveal" data-delay="2">
+          <div class="terminal" aria-hidden="true">
+            <div class="terminal-bar">
+              <span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span>
+              <span class="terminal-title">rag_pipeline.py — agent runtime</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-line"><span class="prompt">$</span> <span class="cmd">python run_agent.py --task research</span></div>
+              <div class="t-line"><span class="out">→ orchestrating with LangGraph…</span></div>
+              <div class="t-pipe">
+                <span class="t-node">User query</span><span class="t-arrow">→</span>
+                <span class="t-node">Planner</span><span class="t-arrow">→</span>
+                <span class="t-node">Tools</span>
+              </div>
+              <div class="t-pipe">
+                <span class="t-node">Retrieval</span><span class="t-arrow">→</span>
+                <span class="t-node">Vector DB</span><span class="t-arrow">→</span>
+                <span class="t-node">LLM</span>
+              </div>
+              <div class="t-line"><span class="out">✓ context grounded · ✓ answer verified</span></div>
+              <div class="t-line"><span class="prompt">&gt;</span> <span class="cmd">response delivered in 1.4s</span></div>
+            </div>
+          </div>
+          <span class="float-tag f1"><span class="dot"></span> LangGraph</span>
+          <span class="float-tag f2"><span class="dot"></span> RAG · Pinecone</span>
+        </div>
+      </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio-section" id="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            
-            <div class="category-tabs">
-                <button class="category-tab active" onclick="filterProjects('all')">All Projects</button>
-                <button class="category-tab" onclick="filterProjects('Agentic AI')">Agentic AI</button>
-                <button class="category-tab" onclick="filterProjects('Machine Learning')">Machine Learning</button>
-                <button class="category-tab" onclick="filterProjects('Generative AI')">Generative AI</button>
-                <button class="category-tab" onclick="filterProjects('Data Analysis')">Data Analysis</button>
-            </div>
+    <!-- ================= Stats ================= -->
+    <section class="stats" aria-label="Highlights">
+      <div class="container stats-inner">
+        <div class="stat reveal"><div class="stat-num">24<span class="plus">+</span></div><div class="stat-label">Projects shipped</div></div>
+        <div class="stat reveal" data-delay="1"><div class="stat-num">14</div><div class="stat-label">Certifications</div></div>
+        <div class="stat reveal" data-delay="2"><div class="stat-num">8</div><div class="stat-label">Technical articles</div></div>
+        <div class="stat reveal" data-delay="3"><div class="stat-num">9.8<span class="plus">/10</span></div><div class="stat-label">B.E. CGPA</div></div>
+      </div>
+    </section>
 
-            <div class="projects-container" id="projectsContainer">
-                <div class="projects-wrapper" id="projectsWrapper">
-                    <!-- Projects will be inserted here by JavaScript -->
+    <!-- ================= About ================= -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-photo reveal">
+            <img src="static/images/Background/about-image.jpg" alt="Portrait of Aditya Naranje, AI/ML Engineer" width="600" height="630">
+            <span class="about-photo-tag"><span class="status-dot" aria-hidden="true"></span> Amravati, Maharashtra, India</span>
+          </div>
+          <div class="about-text reveal" data-delay="1">
+            <span class="eyebrow">About</span>
+            <h2 class="about-h2">Engineering AI systems that turn language into reliable software.</h2>
+            <p>
+              I'm <strong>Aditya Naranje</strong>, an AI/ML Engineer focused on the applied side of modern AI —
+              building <strong>LLM-powered applications, retrieval-augmented generation pipelines and autonomous agents</strong>
+              that solve real workflows rather than demo well.
+            </p>
+            <p>
+              My foundation is in <strong>machine learning, data science and Python engineering</strong>. I've worked across
+              data analysis internships, predictive modelling and end-to-end ML web apps, and now concentrate on agentic
+              systems with <strong>LangChain, LangGraph, Pinecone, AWS Bedrock and FastAPI</strong> — always with evaluation,
+              memory and deployment in mind.
+            </p>
+            <div class="about-points">
+              <div class="about-point"><span class="ai"></span><div><b>RAG &amp; LLM apps</b><span>Grounding model output in vector retrieval and memory.</span></div></div>
+              <div class="about-point"><div><b>AI agents &amp; workflows</b><span>Multi-agent planning, tools and automation with LangGraph &amp; n8n.</span></div></div>
+              <div class="about-point"><div><b>Machine learning</b><span>Classification, regression, NLP, recommenders and computer vision.</span></div></div>
+              <div class="about-point"><div><b>Data to decision</b><span>Analysis, dashboards and storytelling with Python and Power BI.</span></div></div>
+            </div>
+            <div class="focus-tags">
+              <span class="focus-tag">Generative AI</span>
+              <span class="focus-tag">Agentic AI</span>
+              <span class="focus-tag">Machine Learning</span>
+              <span class="focus-tag">Data Analysis</span>
+              <span class="focus-tag">Python</span>
+              <span class="focus-tag">Data Visualization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= What I build ================= -->
+    <section class="section section--alt" id="capabilities">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">AI Engineering</span>
+          <h2 class="section-title">What I build</h2>
+          <p class="section-sub">The core capabilities behind my recent projects — end-to-end systems, not notebooks.</p>
+        </div>
+        <div class="cap-grid">
+          <article class="cap-card reveal">
+            <div class="cap-head">
+              <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+              <h3 class="cap-title">RAG Systems</h3>
+            </div>
+            <p class="cap-desc">Retrieval-augmented pipelines that ground LLMs in your own data with isolated, searchable knowledge bases.</p>
+            <div class="flow">
+              <span class="flow-step">Retrieval</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Rerank</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Context</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Generation</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Verify</span>
+            </div>
+            <p class="cap-foot"><span class="ref">//</span> Isolated RAG Chatbot · AWS Bedrock Agent</p>
+          </article>
+
+          <article class="cap-card reveal" data-delay="1">
+            <div class="cap-head">
+              <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 7V4M8 4h8M9 13h.01M15 13h.01M9 16h6"/></svg></span>
+              <h3 class="cap-title">AI Agents</h3>
+            </div>
+            <p class="cap-desc">Autonomous, tool-using agents that plan tasks, call APIs and synthesise results through stateful graphs.</p>
+            <div class="flow">
+              <span class="flow-step">Planning</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Tools</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Memory</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Execution</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Validation</span>
+            </div>
+            <p class="cap-foot"><span class="ref">//</span> Research Agent · CodeGuard · Email Summary Agent</p>
+          </article>
+
+          <article class="cap-card reveal" data-delay="2">
+            <div class="cap-head">
+              <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></span>
+              <h3 class="cap-title">LLM Applications</h3>
+            </div>
+            <p class="cap-desc">Conversational products — chatbots, content tools and copilots — with structured output and guardrails.</p>
+            <div class="flow">
+              <span class="flow-step">Prompting</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Structured output</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Guardrails</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Evaluate</span>
+            </div>
+            <p class="cap-foot"><span class="ref">//</span> CODEVO · Fitness Chatbot · SparkLine · Story Generator</p>
+          </article>
+
+          <article class="cap-card reveal" data-delay="3">
+            <div class="cap-head">
+              <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2.5"/></svg></span>
+              <h3 class="cap-title">Workflow Automation</h3>
+            </div>
+            <p class="cap-desc">Event-driven automations connecting GitHub, Telegram, WhatsApp and email into intelligent notification flows.</p>
+            <div class="flow">
+              <span class="flow-step">Trigger</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Enrich (LLM)</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Route</span><span class="flow-arrow">→</span>
+              <span class="flow-step">Notify</span>
+            </div>
+            <p class="cap-foot"><span class="ref">//</span> GitHub Notifier · WhatsApp Agent · Telegram bots</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Skills ================= -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Technical Expertise</span>
+          <h2 class="section-title">Skills &amp; tools</h2>
+          <p class="section-sub">Organised by where I use them — from model to deployment.</p>
+        </div>
+        <div class="skill-groups">
+          <div class="skill-group reveal">
+            <div class="skill-group-head">
+              <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.4-1.5 3.2-.6.7-1 1.2-1 2v1h-3v-1c0-.8-.4-1.3-1-2C8.8 8.4 8 7.5 8 6a4 4 0 0 1 4-4z"/><path d="M9 16h6M10 19h4"/></svg></span>
+              <div><h3>AI / LLM</h3><p>generative &amp; agentic</p></div>
+            </div>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="sb-dot"></span>LLMs</span>
+              <span class="skill-badge"><span class="sb-dot"></span>RAG</span>
+              <span class="skill-badge"><span class="sb-dot"></span>AI Agents</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Prompt Engineering</span>
+              <span class="skill-badge"><span class="sb-dot"></span>LangChain</span>
+              <span class="skill-badge"><span class="sb-dot"></span>LangGraph</span>
+              <span class="skill-badge"><span class="sb-dot"></span>LangSmith</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Chatbots</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Fine-tuning</span>
+              <span class="skill-badge"><span class="sb-dot"></span>AWS Bedrock</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Hugging Face</span>
+              <span class="skill-badge"><span class="sb-dot"></span>n8n</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal" data-delay="1">
+            <div class="skill-group-head">
+              <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/><path d="M9 21h6"/></svg></span>
+              <div><h3>Machine Learning &amp; Data</h3><p>models &amp; analytics</p></div>
+            </div>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="sb-dot"></span>Machine Learning</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Deep Learning</span>
+              <span class="skill-badge"><span class="sb-dot"></span>NLP</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Transformers</span>
+              <span class="skill-badge"><span class="sb-dot"></span>PyTorch</span>
+              <span class="skill-badge"><span class="sb-dot"></span>TensorFlow</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Scikit-Learn</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Feature Engineering</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Pandas</span>
+              <span class="skill-badge"><span class="sb-dot"></span>NumPy</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Data Visualization</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Power BI</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal" data-delay="2">
+            <div class="skill-group-head">
+              <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></span>
+              <div><h3>Programming</h3><p>languages &amp; notebooks</p></div>
+            </div>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="sb-dot"></span>Python</span>
+              <span class="skill-badge"><span class="sb-dot"></span>C++</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Core Java</span>
+              <span class="skill-badge"><span class="sb-dot"></span>JavaScript</span>
+              <span class="skill-badge"><span class="sb-dot"></span>HTML &amp; CSS</span>
+              <span class="skill-badge"><span class="sb-dot"></span>SQL / MySQL</span>
+              <span class="skill-badge"><span class="sb-dot"></span>MongoDB</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Statistics</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Web Scraping</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Excel</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal" data-delay="3">
+            <div class="skill-group-head">
+              <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-9 6 6 0 0 0-11.6-1.5A4 4 0 0 0 7 17h10.5z"/><path d="M12 12v6M9 15l3 3 3-3"/></svg></span>
+              <div><h3>Backend &amp; Infrastructure</h3><p>serving &amp; shipping</p></div>
+            </div>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="sb-dot"></span>FastAPI</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Flask</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Streamlit</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Docker</span>
+              <span class="skill-badge"><span class="sb-dot"></span>GitHub Actions</span>
+              <span class="skill-badge"><span class="sb-dot"></span>MLflow</span>
+              <span class="skill-badge"><span class="sb-dot"></span>Pinecone</span>
+              <span class="skill-badge"><span class="sb-dot"></span>ChromaDB</span>
+              <span class="skill-badge"><span class="sb-dot"></span>AstraDB</span>
+              <span class="skill-badge"><span class="sb-dot"></span>REST APIs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Experience ================= -->
+    <section class="section section--alt" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Experience</span>
+          <h2 class="section-title">Where I've worked</h2>
+          <p class="section-sub">Hands-on data and analytics internships that built my engineering foundation.</p>
+        </div>
+        <div class="timeline">
+          <div class="tl-item reveal">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="tl-top">
+                <div>
+                  <h3 class="tl-role">Data Analyst Intern</h3>
+                  <div class="tl-company">iNeuron</div>
                 </div>
+                <span class="tl-date">Jan 2022 – Apr 2022</span>
+              </div>
+              <ul class="tl-list">
+                <li>Gathered data on Google Play Store apps and cleaned &amp; analysed it to surface actionable insights.</li>
+                <li>Built an interactive dashboard as a web app using Python and Heroku.</li>
+              </ul>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image"></div>
-                <div class="about-text">
-                    <h2>About Me</h2>
-                    <p>I'm a passionate AI/ML Engineer with over 2 years of experience turning data into actionable insights and driving strategic decisions. I specialize in data analysis, business intelligence, and leveraging Gen AI to solve complex problems.</p>
-                    <p>My approach combines analytical thinking with AI-driven solutions to deliver results that not only optimize processes but also create meaningful business impact.</p>
-                   <div class="skills">
-    <span class="skill-tag">Generative AI</span>
-    <span class="skill-tag">Agentic AI</span>
-    <span class="skill-tag">Machine Learning</span>
-    <span class="skill-tag">Data Analysis</span>
-    <span class="skill-tag">Python Programming</span>
-    <span class="skill-tag">Data Visualization</span>
-</div>
-
+          <div class="tl-item reveal" data-delay="1">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="tl-top">
+                <div>
+                  <h3 class="tl-role">Data Science Intern</h3>
+                  <div class="tl-company">LetsGrowMore</div>
                 </div>
+                <span class="tl-date">Sep 2021 – Oct 2021</span>
+              </div>
+              <ul class="tl-list">
+                <li>Performed stock-price forecasting using an LSTM neural network.</li>
+                <li>Converted images to sketches using OpenCV and clustered the Iris dataset across multiple features.</li>
+              </ul>
             </div>
+          </div>
 
+          <div class="tl-item reveal" data-delay="2">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="tl-top">
+                <div>
+                  <h3 class="tl-role">Machine Learning Intern</h3>
+                  <div class="tl-company">The Sparks Foundation</div>
+                </div>
+                <span class="tl-date">Mar 2021 – Apr 2021</span>
+              </div>
+              <ul class="tl-list">
+                <li>Performed exploratory data analysis on the IPL dataset.</li>
+                <li>Analysed terrorism data to extract useful insights and cleaned &amp; visualised sales data.</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-<section class="skills-section" id="skills">
-    <div class="container">
-        <h2 class="section-title">Skills & Tools</h2>
-        <div class="skills-grid">
-
-            <!-- Shuffled skills -->
-            <div class="skill-item ml"><i class="fa-brands fa-python skill-icon"></i><div class="skill-name">Python</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-code-commit skill-icon"></i><div class="skill-name">LangChain</div></div>
-            <div class="skill-item ml"><i class="fa-brands fa-python skill-icon"></i><div class="skill-name">PyTorch</div></div>
-            <div class="skill-item da"><i class="fa-brands fa-html5 skill-icon"></i><div class="skill-name">HTML/CSS</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-brain skill-icon"></i><div class="skill-name">Transformers</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-repeat skill-icon"></i><div class="skill-name">RNN</div></div>
-            <div class="skill-item da"><i class="fa-solid fa-database skill-icon"></i><div class="skill-name">MySQL</div></div>
-            <div class="skill-item ml"><i class="fa-brands fa-github skill-icon"></i><div class="skill-name">Github Actions</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-database skill-icon"></i><div class="skill-name">Pinecone</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-database skill-icon"></i><div class="skill-name">ChromaDB</div></div>
-            <div class="skill-item da"><i class="fa-solid fa-circle-nodes skill-icon"></i><div class="skill-name">Langgraph</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-bezier-curve skill-icon"></i><div class="skill-name">n8n</div></div>
-            <div class="skill-item da"><i class="fa-brands fa-aws skill-icon"></i><div class="skill-name">AWS Bedrock</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-robot skill-icon"></i><div class="skill-name">NLP</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-wave-square skill-icon"></i><div class="skill-name">MLFlow</div></div>
-            <div class="skill-item da"><i class="fa-brands fa-watchman-monitoring skill-icon"></i><div class="skill-name">LangSmith</div></div>
-            <div class="skill-item ml"><i class="fa-brands fa-bots skill-icon"></i><div class="skill-name">ChatBots</div></div>
-            <div class="skill-item da"><i class="fa-solid fa-globe skill-icon"></i><div class="skill-name">Streamlit</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-wrench skill-icon"></i><div class="skill-name">Fine-tuning</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-database skill-icon"></i><div class="skill-name">RAG</div></div>
-            <div class="skill-item ml"><i class="fa-brands fa-python skill-icon"></i><div class="skill-name">TensorFlow</div></div>
-            <div class="skill-item ml"><i class="fa-brands fa-python skill-icon"></i><div class="skill-name">Scikit-Learn</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-chart-line skill-icon"></i><div class="skill-name">Pandas</div></div>
-            <div class="skill-item da"><i class="fa-solid fa-chart-simple skill-icon"></i><div class="skill-name">Power BI</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-square-poll-vertical skill-icon"></i><div class="skill-name">NumPy</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-chart-pie skill-icon"></i><div class="skill-name">Matplotlib</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-chart-pie skill-icon"></i><div class="skill-name">Seaborn</div></div>
-            <div class="skill-item da"><i class="fa-solid fa-chart-column skill-icon"></i><div class="skill-name">Plotly</div></div>
-            <div class="skill-item da"><i class="fa-solid fa-file-excel skill-icon"></i><div class="skill-name">Excel</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-face-smile skill-icon"></i><div class="skill-name">Hugging Face</div></div>
-            <div class="skill-item da"><i class="fa-brands fa-figma skill-icon"></i><div class="skill-name">Figma</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-broom skill-icon"></i><div class="skill-name">Feature Engineering</div></div>
-            <div class="skill-item ml"><i class="fa-solid fa-broom skill-icon"></i><div class="skill-name">Data Cleaning</div></div>
-            <div class="skill-item da"><i class="fa-brands fa-js skill-icon"></i><div class="skill-name">JavaScript</div></div>
-            <div class="skill-item da"><i class="fa-solid fa-docker skill-icon"></i><div class="skill-name">Docker</div></div>
-            <div class="skill-item ai"><i class="fa-solid fa-cloud skill-icon"></i><div class="skill-name">AstraDB</div></div>
-            <div class="skill-item da"><i class="fa-solid fa-server skill-icon"></i><div class="skill-name">FastAPI</div></div>
-
+    <!-- ================= Projects ================= -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
+          <span class="eyebrow" style="justify-content:center;">Projects</span>
+          <h2 class="section-title">Featured work</h2>
+          <p class="section-sub" style="margin-left:auto;margin-right:auto;">
+            Agentic and generative AI first, then machine learning and data analysis. Every project links to its source.
+          </p>
         </div>
+
+        <div class="filter-bar reveal" role="group" aria-label="Filter projects">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="Agentic AI">Agentic AI</button>
+          <button class="filter-btn" data-filter="Generative AI">Generative AI</button>
+          <button class="filter-btn" data-filter="Machine Learning">Machine Learning</button>
+          <button class="filter-btn" data-filter="Data Analysis">Data Analysis</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid"><!-- rendered by js/main.js --></div>
+
+        <div class="projects-more reveal">
+          <a href="https://github.com/adityanaranje?tab=repositories" target="_blank" rel="noopener" class="btn btn-ghost">
+            See all repositories on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Education ================= -->
+    <section class="section section--alt" id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Education</span>
+          <h2 class="section-title">Academic background</h2>
+        </div>
+        <div class="edu-grid">
+          <article class="edu-card reveal">
+            <span class="edu-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></span>
+            <div class="edu-level">Undergraduate</div>
+            <h3 class="edu-degree">B.E. Computer Science &amp; Engineering</h3>
+            <p class="edu-school">Prof. Ram Meghe Institute of Technology &amp; Research, Amravati</p>
+            <div class="edu-meta"><span class="edu-date">2019 – Present</span><span class="edu-grade">CGPA 9.8</span></div>
+          </article>
+
+          <article class="edu-card reveal" data-delay="1">
+            <span class="edu-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+            <div class="edu-level">Senior Secondary</div>
+            <h3 class="edu-degree">Higher Secondary (XII)</h3>
+            <p class="edu-school">Rajeshwar Union Junior College, Badnera</p>
+            <div class="edu-meta"><span class="edu-date">2018 – 2019</span><span class="edu-grade">85.08%</span></div>
+          </article>
+
+          <article class="edu-card reveal" data-delay="2">
+            <span class="edu-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="m2 13 10 5 10-5"/></svg></span>
+            <div class="edu-level">Secondary</div>
+            <h3 class="edu-degree">Secondary School (X)</h3>
+            <p class="edu-school">Rajeshwar Union High School, Badnera</p>
+            <div class="edu-meta"><span class="edu-date">2016 – 2017</span><span class="edu-grade">91.60%</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Certifications ================= -->
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Certifications</span>
+          <h2 class="section-title">Credentials &amp; training</h2>
+          <p class="section-sub">Verified certificates from IBM, AWS, Coding Ninjas, Internshala, LinkedIn Learning and more. Click any to view.</p>
+        </div>
+        <div class="cert-grid" id="certGrid"><!-- rendered by js/main.js --></div>
+      </div>
+    </section>
+
+    <!-- ================= Writing ================= -->
+    <section class="section section--alt" id="writing">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Writing</span>
+          <h2 class="section-title">Latest on Medium</h2>
+          <p class="section-sub">I write about RAG architecture, LLM engineering and machine learning to sharpen and share what I learn.</p>
+        </div>
+        <div class="blog-grid" id="blogGrid"><!-- rendered by js/main.js --></div>
+        <div class="writing-more reveal">
+          <a href="https://adityanaranje.medium.com/" target="_blank" rel="noopener" class="btn btn-ghost">
+            Read all articles on Medium
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Contact ================= -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-cta reveal">
+          <span class="eyebrow" style="justify-content:center;">Contact</span>
+          <h2>Let's build something <span class="accent">intelligent.</span></h2>
+          <p>I'm open to AI/ML engineering roles, collaborations and interesting problems. The fastest way to reach me is email or LinkedIn.</p>
+          <div class="contact-actions">
+            <a href="mailto:aditya.naranje7@gmail.com" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Email Me
+            </a>
+            <a href="static/docs/Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
+              Download Resume
+            </a>
+          </div>
+          <div class="contact-links">
+            <a class="contact-chip" href="mailto:aditya.naranje7@gmail.com"><span class="ci-mail"></span>aditya.naranje7@gmail.com</a>
+            <a class="contact-chip" href="https://www.linkedin.com/in/anaranje" target="_blank" rel="noopener"><span class="ci-linkedin"></span>LinkedIn</a>
+            <a class="contact-chip" href="https://github.com/adityanaranje" target="_blank" rel="noopener"><span class="ci-github"></span>GitHub</a>
+            <a class="contact-chip" href="https://adityanaranje.medium.com/" target="_blank" rel="noopener"><span class="ci-medium"></span>Medium</a>
+            <a class="contact-chip" href="https://www.kaggle.com/adityanaranje" target="_blank" rel="noopener"><span class="ci-kaggle"></span>Kaggle</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><span class="brand-mark">AN</span> Aditya Naranje</div>
+      <p class="footer-copy">© 2026 Aditya Naranje · Built with HTML, CSS &amp; JavaScript</p>
+      <div class="footer-social">
+        <a href="https://github.com/adityanaranje" target="_blank" rel="noopener" aria-label="GitHub" class="fs-github"></a>
+        <a href="https://www.linkedin.com/in/anaranje" target="_blank" rel="noopener" aria-label="LinkedIn" class="fs-linkedin"></a>
+        <a href="https://x.com/aditya_naranje" target="_blank" rel="noopener" aria-label="X" class="fs-x"></a>
+        <a href="https://adityanaranje.medium.com/" target="_blank" rel="noopener" aria-label="Medium" class="fs-medium"></a>
+      </div>
     </div>
-</section>
+  </footer>
 
-
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-           <div class="services-grid">
-    <div class="service-card">
-        <div class="service-icon">🤖</div>
-        <h3 class="service-title">Artificial intelligence (AI)</h3>
-        <p class="service-description">Building intelligent and interactive web experiences powered by Generative and Agentic AI technologies.</p>
+  <!-- ================= Certification lightbox ================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer" aria-hidden="true">
+    <div class="lightbox-inner">
+      <div class="lightbox-head">
+        <div><h4 id="lbTitle">Certificate</h4><span id="lbIssuer"></span></div>
+        <button class="icon-btn" id="lbClose" aria-label="Close certificate viewer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <img id="lbImg" src="" alt="Certificate">
     </div>
+  </div>
 
-    <div class="service-card">
-        <div class="service-icon">🧠</div>
-        <h3 class="service-title">Machine Learning Solutions</h3>
-        <p class="service-description">Designing predictive and adaptive models that turn complex data into actionable business intelligence.</p>
-    </div>
-
-    <div class="service-card">
-        <div class="service-icon">📊</div>
-        <h3 class="service-title">Data Analysis</h3>
-        <p class="service-description">Extracting insights and visualizing patterns from structured and unstructured data for smarter decision-making.</p>
-    </div>
-</div>
-
-        </div>
-    </section>
-
-    <!-- Blogs Section -->
-    <section class="portfolio-section" id="blogs" style="background: #1a1a1a;">
-        <div class="container">
-            <h2 class="section-title">Medium Blogs</h2>
-            
-            <div class="projects-container" id="blogsContainer">
-                <div class="projects-wrapper" id="blogsWrapper">
-                    <!-- Blogs will be inserted here by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-info">
-                <p class="contact-item">📧 aditya.naranje7@gmail.com</p>
-                <p class="contact-item">📍 Amravati, Maharashtra, IND</p>
-            </div>
-           <div class="social-links">
-    <a href="https://github.com/adityanaranje" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.twitter.com/aditya_naranje" class="social-link" target="_blank"><i class="fa-solid fa-x"></i></a>
-    <a href="https://www.linkedin.com/in/anaranje" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://m.facebook.com/mahindra.dhoni.710" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.instagram.com/aditya.naranje7/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://adityanaranje.medium.com/" class="social-link" target="_blank"><i class="fab fa-medium"></i></a>
-    <a href="https://www.kaggle.com/adityanaranje" class="social-link" target="_blank"><i class="fab fa-kaggle"></i></a>
-    <a href="https://discord.com/channels/delta_venom" class="social-link" target="_blank"><i class="fab fa-discord"></i></a>
-</div>
-
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Aditya Naranje. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        const roles = [
-            "Gen AI Engineer",
-            "ML Engineer",
-            "Data Analyst",
-            "Lifelong Learner"
-          ];
-        
-          let index = 0;
-          const textElement = document.getElementById("animated-text");
-        
-          setInterval(() => {
-            textElement.classList.add("fade");
-        
-            setTimeout(() => {
-              index = (index + 1) % roles.length;
-              textElement.textContent = roles[index];
-              textElement.classList.remove("fade");
-            }, 500);
-        
-          }, 2000);
-
-        
-        const projects = [
-  { id: 1, title: "Research Agent (Agent Builder)", category: "Agentic AI", description: "Multi-agent AI workflow for real-time research and insights.", link: "https://github.com/adityanaranje/Agent-Builder-Research-Agent", image: "static/images/Projects/agent-builder.png" },
-  { id: 2, title: "Github Events Notifier (n8n)", category: "Agentic AI", description: "Turns GitHub events into intelligent AI-powered notifications.", link: "https://github.com/adityanaranje/n8n-github-events-telegram-email-workflow", image: "static/images/Projects/telegram-bot.png" },
-  { id: 3, title: "CODEVO", category: "Generative AI", description: "AI tool for automated code review and generation.", link: "https://github.com/adityanaranje/CODEVO", image: "static/images/Projects/codevo.png" },
-  { id: 4, title: "Mobile Shop WhatsApp Agent (n8n)", category: "Agentic AI", description: "WhatsApp chatbot managing store orders and customer queries.", link: "https://github.com/adityanaranje/n8n-WhatsApp-Bot", image: "static/images/Projects/whatsapp-bot.png" },
-  { id: 5, title: "Fitness Chatbot", category: "Generative AI", description: "AI fitness assistant for personalized workouts and nutrition.", link: "https://github.com/adityanaranje/FITNESS-CHATBOT", image: "static/images/Projects/fitness-bot.png" },
-  { id: 6, title: "Sparkline", category: "Generative AI", description: "AI assistant that creates study plans from job links.", link: "https://github.com/adityanaranje/SparkLine", image: "static/images/Projects/sparkline.png" },
-  { id: 7, title: "Story Generator", category: "Generative AI", description: "Story creation tool using LLMs and Streamlit interface.", link: "https://github.com/adityanaranje/STORY-GENERATOR", image: "static/images/Projects/story-generator.png" },
-  { id: 8, title: "British Airways Analysis", category: "Data Analysis", description: "Data insights and visualization for British Airways dataset.", link: "https://github.com/adityanaranje/British-airways-forage", image: "static/images/Projects/british-airways.png" },
-  { id: 9, title: "Cricket Data Analysis", category: "Data Analysis", description: "Analyzes T20 cricket statistics using Python and Streamlit.", link: "https://github.com/adityanaranje/T-20-Cricket-Data-Analysis-Using-Streamlit", image: "static/images/Projects/cricket-analysis.png" },
-  { id: 10, title: "Onyx Challenges Data Analysis", category: "Data Analysis", description: "Power BI dashboard visualizing Onyx challenge performance.", link: "https://github.com/adityanaranje/Onyx-Data-DNA-Challenges", image: "static/images/Projects/onyx.png" },
-  { id: 11, title: "Movie Recommendation", category: "Machine Learning", description: "Recommends movies using KNN and cosine similarity models.", link: "https://github.com/adityanaranje/MOVIE-RECOMMENDATION", image: "static/images/Projects/movie.png" },
-  { id: 12, title: "Indian Crop Analysis", category: "Data Analysis", description: "SQL-based analysis of Indian crop data using Python.", link: "https://github.com/adityanaranje/SQL-For-India-Crop-Data-Analysis", image: "static/images/Projects/sql-crop.png" },
-  { id: 13, title: "IPL Win Probability Predictor", category: "Machine Learning", description: "Predicts IPL match outcomes using regression models.", link: "https://github.com/adityanaranje/IPL-WIN-PROBABILITY-PREDICTOR", image: "static/images/Projects/ipl-win.png" },
-  { id: 14, title: "Google App Store Analysis", category: "Data Analysis", description: "Analyzes Google Play Store app data and trends.", link: "https://github.com/adityanaranje/Google-App-Store-Analysis-Ineuron-Internship", image: "static/images/Projects/google-app-store.png" },
-  { id: 15, title: "Health Care", category: "Machine Learning", description: "ML web app predicting diseases from patient symptoms.", link: "https://github.com/adityanaranje/HEALTH-CARE", image: "static/images/Projects/health-care.png" },
-  { id: 16, title: "Store Sales Prediction", category: "Machine Learning", description: "Regression model predicting future retail sales data.", link: "https://github.com/adityanaranje/Store_Sales_Prediction", image: "static/images/Projects/storesales.png" },
-  { id: 17, title: "Flight Fare Prediction", category: "Machine Learning", description: "Predicts flight fares using regression-based models.", link: "https://github.com/adityanaranje/FLIGHT-FARE-PREDICTION", image: "static/images/Projects/flight-fare.png" },
-  { id: 18, title: "Face and Object Detection", category: "Machine Learning", description: "Computer vision app detecting faces and objects accurately.", link: "https://github.com/adityanaranje/COMPUTER-VISION-PROJECT", image: "static/images/Projects/objec-face.png" },
-  { id: 19, title: "T20 Score Prediction", category: "Machine Learning", description: "Predicts T20 first innings score using regression models.", link: "https://github.com/adityanaranje/T20-1ST-INNING-SCORE-PREDICTION", image: "static/images/Projects/score-predict.png" },
-  { id: 20, title: "Book Recommendation", category: "Machine Learning", description: "Recommends books using collaborative filtering approach.", link: "https://github.com/adityanaranje/BOOK-RECOMMENDER", image: "static/images/Projects/book-recommender.png" },
-  { id: 21, title: "AWS Bedrock LLM Agent", category: "Generative AI", description: "Fitness RAG chatbot on Amazon Bedrock with memory and FAISS retrieval.", link: "https://github.com/adityanaranje/RAG-Chatbot-AWS-Bedrock-Agentcore", image: "static/images/Projects/aws-bedrock.png" },
-  { id: 22, title: "CodeGuard", category: "Agentic AI", description: "LLM-powered automated PR reviewer enforcing company coding rules before merging.", link: "https://github.com/adityanaranje/CodeGuard", image: "static/images/Projects/code-review.png" },
-  { id: 23, title: "Isolated RAG Chatbot", category: "Generative AI", description: "Dockerized isolated RAG chatbot using OpenAI and Pinecone with bot-level context separation.", link: "https://github.com/adityanaranje/ISOLATED-RAG-CHATBOT", image: "static/images/Projects/isolated-rag-bot.png" },
-  { id: 24, title: "Email Summary Agent - Telegram Bot", category: "Agentic AI", description: "Automated email summary telegram bot.", link: "https://github.com/adityanaranje/EMAIL-SUMMARY-AGENT-TELEGRAM", image: "static/images/Projects/email-summary.png" }
-        ];
-
-
-
-
-       const blogs = [
- {
-    id: 1,
-    title: "Superpowers vs Algorithms: The Boys Guide to Machine Learning & Deep Learning",
-    date: "Apr 26, 2026",
-    excerpt: "Learn machine learning and deep learning concepts through a fun analogy inspired by The Boys, where superpowers represent algorithms, making complex ideas easier to understand with relatable real-world examples.",
-    tags: ["Machine Learning", "Deep Learning", "AI Basics", "Data Science", "Learning"],
-    icon: "📊",
-    link: "https://adityanaranje.medium.com/superpowers-vs-algorithms-the-boys-guide-to-machine-learning-deep-learning-56543e614e8b",
-    image: "static/images/Blogs/theboys.png"
-  }, 
- {
-    id: 2,
-    title: "PyTorch vs TensorFlow — Iron Man vs Captain America of Deep Learning",
-    date: "Apr 25, 2026",
-    excerpt: "A practical and intuitive comparison of PyTorch and TensorFlow using real-world examples, code, and a fun Marvel analogy to help you choose the right framework for learning, experimentation, and production.",
-    tags: ["Deep Learning", "PyTorch", "TensorFlow", "Machine Learning", "AI"],
-    icon: "📊",
-    link: "https://medium.com/@adityanaranje/pytorch-vs-tensorflow-iron-man-vs-captain-america-of-deep-learning-8749cbcc0033",
-    image: "static/images/Blogs/blog1.png"
-  }, 
-  {
-    id: 3,
-    title: "A Smart RAG Architecture with LangGraph",
-    date: "Apr 06, 2026",
-    excerpt: "Explore a modern Retrieval-Augmented Generation architecture using LangGraph to build smarter, context-aware AI systems with better control, memory, and real-world applicability.",
-    tags: ["RAG", "LangGraph", "LLM", "Generative AI", "AI Architecture"],
-    icon: "📊",
-    link: "https://medium.com/@adityanaranje/a-smart-rag-architecture-with-langgraph-03e294cd809c",
-    image: "static/images/Blogs/blog2.png"
-  },
-  {
-    id: 4,
-    title: "Prompting vs RAG vs Fine-Tuning — Explained with Real-Life Examples",
-    date: "Mar 16, 2026",
-    excerpt: "Understand the key differences between prompting, Retrieval-Augmented Generation, and fine-tuning with simple real-life examples, helping you choose the right approach for building effective AI applications.",
-    tags: ["LLM", "Prompt Engineering", "RAG", "Fine Tuning", "Generative AI"],
-    icon: "📊",
-    link: "https://medium.com/@adityanaranje/prompting-vs-rag-vs-fine-tuning-explained-with-real-life-examples-bf5ec841f39f",
-    image: "static/images/Blogs/blog3.png"
-  },         
-  {
-    id: 5,
-    title: "Getting Started With Plotly",
-    date: "Jan 19, 2022",
-    excerpt: "Learn how to create interactive and visually appealing data visualizations using Plotly in Python — perfect for data science beginners.",
-    tags: ["Data Visualization", "Python", "Plotly"],
-    icon: "📊",
-    link: "https://medium.com/me/stats/post/ca5e8ffe4484?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
-    image: "static/images/Blogs/plotly.png"
-  },
-  {
-    id: 6,
-    title: "Basic Of Stats in Python",
-    date: "Jan 11, 2022",
-    excerpt: "Understand the fundamentals of statistics and their implementation in Python for real-world data analysis projects.",
-    tags: ["Statistics", "Python", "Data Analysis"],
-    icon: "📈",
-    link: "https://medium.com/me/stats/post/9d150af9ef46?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
-    image: "static/images/Blogs/Stats.png"
-  },
-  {
-    id: 7,
-    title: "T-20 Cricket Data Cleaning and Transform",
-    date: "Jan 6, 2022",
-    excerpt: "Step-by-step guide on cleaning and transforming raw T20 cricket data from JSON to CSV using Python for further analysis.",
-    tags: ["Python", "Data Cleaning", "ETL"],
-    icon: "🏏",
-    link: "https://medium.com/me/stats/post/bcb4b590e5a8?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
-    image: "static/images/Blogs/datacleaning.png"
-  },
-  {
-    id: 8,
-    title: "T-20 Cricket Data Analysis",
-    date: "Jan 9, 2022",
-    excerpt: "Analyze T20 cricket statistics with Python and Streamlit to uncover patterns, trends, and player insights through interactive dashboards.",
-    tags: ["Data Analysis", "Python", "Streamlit"],
-    icon: "📊",
-    link: "https://medium.com/me/stats/post/b4c44a134584?statsForAllStoriesUrl=https%3A%2F%2Fmedium.com%2Fme%2Fstats&source=stats_homepage--------------------------------------------",
-    image: "static/images/Blogs/dataanalysis.png"
-  }
-];
-
-
-        let currentCategory = 'all';
-
-        function renderProjects(category = 'all') {
-            const wrapper = document.getElementById('projectsWrapper');
-            const filteredProjects = category === 'all' 
-                ? projects 
-                : projects.filter(p => p.category === category);
-            
-            wrapper.innerHTML = filteredProjects.map(project => `
-                <div class="project-card" onclick="window.open('${project.link}', '_blank')">
-                    <div class="project-image">
-                        <img src="${project.image}" alt="${project.title}">
-                    </div>
-                    <div class="project-info">
-                        <p class="project-category">${project.category.toUpperCase()}</p>
-                        <h3 class="project-title">${project.title}</h3>
-                        <p class="project-description">${project.description}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function getProjectEmoji(category) {
-            const emojis = {
-    "Generative AI": "🤖",
-    "Agentic AI": "🚀",
-    "Machine Learning": "🧠",
-    "Data Analysis": "📊"
-};
-            return emojis[category] || '✨';
-        }
-
-        function filterProjects(category) {
-            currentCategory = category;
-            
-            // Update active tab
-            document.querySelectorAll('.category-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Render filtered projects
-            renderProjects(category);
-            
-            // Reset scroll position
-            document.getElementById('projectsContainer').scrollLeft = 0;
-        }
-
-        // Initialize projects on page load
-        renderProjects();
-        renderBlogs();
-
-        function renderBlogs() {
-            const wrapper = document.getElementById('blogsWrapper');
-            
-            wrapper.innerHTML = blogs.map(blog => `
-                <div class="blog-card" onclick="window.open('${blog.link}', '_blank')">
-                    <div class="blog-image">
-                        <img src="${blog.image}" alt="${blog.title}">
-                    </div>
-                    <div class="blog-info">
-                        <p class="blog-date">${blog.date}</p>
-                        <h3 class="blog-title">${blog.title}</h3>
-                        <p class="blog-excerpt">${blog.excerpt}</p>
-                        <div class="blog-tags">
-                            ${blog.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Theme toggle function
-        function toggleTheme() {
-            const body = document.body;
-            const themeToggle = document.getElementById('themeToggle');
-            
-            body.classList.toggle('light-mode');
-            
-            if (body.classList.contains('light-mode')) {
-                themeToggle.textContent = '☀️';
-            } else {
-                themeToggle.textContent = '🌙';
-            }
-        }
-
-        // Navigation functions
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const menuToggle = document.getElementById('menuToggle');
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const menuToggle = document.getElementById('menuToggle');
-            navLinks.classList.remove('active');
-            menuToggle.classList.remove('active');
-        }
-
-        // Smooth scroll to sections
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
