@@ -3,7 +3,7 @@
 Personal portfolio of **Aditya Naranje — AI/ML Engineer**, showcasing LLM applications,
 RAG systems, AI agents, machine-learning and data-analysis work.
 
-🔗 **Live site:** https://adityanaranje.github.io/MY-PORTFOLIO/
+🔗 **Live site:** https://adityanaranje.com
 
 ## Tech stack
 
